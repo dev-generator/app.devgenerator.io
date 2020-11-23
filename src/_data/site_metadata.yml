@@ -1,0 +1,7 @@
+# Site settings
+
+title: DevGenerator
+tagline: Generate Config files for the likes of Rubocop, Package.json
+email: devgenerator@chiefpansancolt.live
+description: Generate files for various linters, base files, etc. without having to manually create or remember every available input that has to go into a file.
+copyright: "&copy; 2020 Dev Generator. All rights reserved."

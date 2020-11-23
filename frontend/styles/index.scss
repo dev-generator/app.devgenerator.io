@@ -1,0 +1,21 @@
+/* purgecss start ignore */
+@import "tailwindcss/base";
+
+/* purgecss end ignore */
+
+.documentation {
+
+  dt {
+    @apply mt-4;
+  }
+
+  dd {
+    @apply ml-2;
+  }
+}
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("https://rsms.me/inter/inter.css");
+@import "prismjs/themes/prism";
+@import "prismjs/themes/prism-tomorrow";

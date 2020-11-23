@@ -1,0 +1,244 @@
+details:
+  - title: Core Details
+    uniqueName: core_details_section
+    first: true
+    fields:
+      - name: Name
+        uniqueName: name
+        required: true
+        defaultValue: ""
+        fieldType: text
+      - name: Version
+        uniqueName: version
+        required: true
+        defaultValue: "0.0.0"
+        fieldType: text
+      - name: Description
+        uniqueName: description
+        required: true
+        defaultValue: ""
+        fieldType: textarea
+      - name: Private
+        extraDetails: Check if Private repo/package
+        uniqueName: private
+        required: true
+        defaultValue: "false"
+        fieldType: checkbox
+      - name: License
+        uniqueName: license
+        required: true
+        defaultValue: "UNLICENSED"
+        fieldType: text
+      - name: Keywords
+        uniqueName: keywords
+        required: false
+        defaultValue: ""
+        fieldType: textarea
+  - title: Scripts
+    uniqueName: scripts_section
+    first: false
+    fields:
+      - name: Scripts
+        uniqueName: scripts
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Name
+            uniqueName: name
+            placeholder: Name of Command
+          - name: Script
+            uniqueName: script
+            placeholder: Command to Run
+  - title: Links
+    uniqueName: links_section
+    first: false
+    fields:
+      - name: Homepage
+        uniqueName: homepage
+        required: false
+        defaultValue: ""
+        fieldType: text
+      - name: Bugs
+        uniqueName: bugs
+        required: false
+        fieldType: multipleColumn
+        fieldSize: "2"
+        gridSize: "4"
+        fields:
+          - name: URL
+            uniqueName: bugs-url
+            fieldType: text
+          - name: Email
+            uniqueName: bugs-email
+            fieldType: text
+      - name: Repository
+        uniqueName: repository
+        required: false
+        fieldType: multipleColumn
+        fieldSize: "2"
+        gridSize: "4"
+        fields:
+          - name: Type
+            uniqueName: repository-type
+            fieldType: text
+          - name: URL
+            uniqueName: repository-url
+            fieldType: text
+      - name: Author
+        uniqueName: author
+        required: false
+        fieldType: multipleColumn
+        fieldSize: "2"
+        gridSize: "4"
+        fields:
+          - name: Name
+            uniqueName: author-name
+            fieldType: text
+          - name: Email
+            uniqueName: author-email
+            fieldType: text
+      - name: Contributors
+        uniqueName: contributors
+        required: false
+        fieldType: complexArray
+        fields:
+          - name: Name
+            uniqueName: name
+            placeholder: Name of individual
+          - name: Email
+            uniqueName: email
+            placeholder: Email to individual
+          - name: URL
+            uniqueName: url
+            placeholder: Link to individual
+      - name: Funding
+        uniqueName: funding
+        required: false
+        fieldType: complexArray
+        fields:
+          - name: Type
+            uniqueName: type
+            placeholder: Funding Name
+          - name: URL
+            uniqueName: url
+            placeholder: Link to Funding
+  - title: Files
+    uniqueName: files_section
+    first: false
+    fields:
+      - name: Files
+        uniqueName: files
+        required: false
+        defaultValue: ""
+        fieldType: textarea
+      - name: Main
+        uniqueName: main
+        required: false
+        defaultValue: ""
+        fieldType: text
+      - name: Browser
+        uniqueName: browser
+        required: false
+        defaultValue: ""
+        fieldType: text
+      - name: Bin
+        uniqueName: bin
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Name
+            uniqueName: name
+            placeholder: Name of Command
+          - name: File Path
+            uniqueName: file_path
+            placeholder: Path to File
+      - name: Man
+        uniqueName: man
+        required: false
+        defaultValue: ""
+        fieldType: text
+  - title: Engine
+    uniqueName: engine_section
+    first: false
+    fields:
+      - name: Engines
+        uniqueName: engines
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Name
+            uniqueName: name
+            placeholder: Name of Engine
+          - name: Version
+            uniqueName: verion
+            placeholder: Versions
+      - name: Operating System
+        uniqueName: os
+        required: false
+        defaultValue: ""
+        fieldType: textarea
+      - name: CPU
+        uniqueName: cpu
+        required: false
+        defaultValue: ""
+        fieldType: textarea
+  - title: Node Modules
+    uniqueName: node_modules_section
+    first: false
+    fields:
+      - name: Dependencies
+        uniqueName: dependencies
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Package
+            uniqueName: package
+            placeholder: Name of Package
+          - name: Version
+            uniqueName: verion
+            placeholder: Versions
+      - name: Dev Dependencies
+        uniqueName: devDependencies
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Package
+            uniqueName: package
+            placeholder: Name of Package
+          - name: Version
+            uniqueName: verion
+            placeholder: Versions
+      - name: Peer Dependencies
+        uniqueName: peerDependencies
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Package
+            uniqueName: package
+            placeholder: Name of Package
+          - name: Version
+            uniqueName: verion
+            placeholder: Versions
+      - name: Bundled Dependencies
+        uniqueName: bundledDependencies
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Package
+            uniqueName: package
+            placeholder: Name of Package
+          - name: Version
+            uniqueName: verion
+            placeholder: Versions
+      - name: Optional Dependencies
+        uniqueName: optionalDependencies
+        required: false
+        fieldType: complexTable
+        fields:
+          - name: Package
+            uniqueName: package
+            placeholder: Name of Package
+          - name: Version
+            uniqueName: verion
+            placeholder: Versions
+

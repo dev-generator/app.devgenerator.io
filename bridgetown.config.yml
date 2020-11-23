@@ -1,0 +1,22 @@
+baseurl: ""
+url: ""
+
+permalink: simple
+timezone: America/New_York
+
+pagination:
+  enabled: false
+
+collections:
+  generators:
+    output: true
+    name: Generators
+
+defaults:
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
+
+svg:
+  optimize: true
