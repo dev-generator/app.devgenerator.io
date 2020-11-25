@@ -1,0 +1,31 @@
+---
+name: Static Sidebar
+description: Static Sidebar section
+variables:
+    navigation:
+        - data
+---
+
+<div class="hidden" data-target="mobile.menu">
+    <div class="fixed inset-0 flex z-40">
+        <div data-target="mobile.overlay" class="opacity-100 fixed inset-0 transition-opacity ease-linear duration-300">
+            <div class="absolute inset-0 bg-gray-600 opacity-75" aria-hidden="true"></div>
+        </div>
+        <div data-target="mobile.sidebar" class="-translate-x-full relative flex flex-col w-72 pt-5 pb-4 bg-white dark:bg-black transition ease-in-out duration-300 transform">
+            <div class="absolute top-0 right-0 -mr-12 pt-2">
+                <button data-action="click->mobile#toggle" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <span class="sr-only">Close Sidebar</span>
+                    {% render "icons/x", classNames: "h-6 w-6 text-white" %}
+                </button>
+            </div>
+            <div class="flex-shrink-0 flex items-center px-4">
+                <img class="h-20 w-auto -mt-4 block dark:hidden" src="/assets/images/logo/Dev Generator Logo.png" alt="Dev Generator logo">
+                <img class="h-20 w-auto -mt-4 hidden dark:block" src="/assets/images/logo/Dev Generator Logo White.png" alt="Dev Generator logo">
+            </div>
+            <nav class="mt-5 flex-shrink-0 h-full divide-y divide-gray-800 dark:divide-gray-100 overflow-y-auto" aria-label="Sidebar">
+                {% render "sidebar/menu", navigation: navigation %}
+            </nav>
+        </div>
+        <div class="flex-shrink-0 w-14" aria-hidden="true"></div>
+    </div>
+</div>

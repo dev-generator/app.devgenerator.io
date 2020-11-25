@@ -1,0 +1,38 @@
+main:
+  - name: section 1
+    first: true
+    children:
+      - name: Home
+        group: false
+        link: /
+        icon: home
+      - name: Ruby Gems
+        group: true
+        icon: rubygems
+        children:
+          - name: Rubocop
+            link: /#
+            icon: rubocop
+      - name: Node Modules
+        group: true
+        icon: nodejs
+        children:
+          - name: Packagejson
+            link: /#
+            icon: npm
+  - name: section 2
+    first: false
+    children:
+      - name: Help
+        group: false
+        link: /#
+        icon: question-mark-circle
+      - name: Documentation
+        group: false
+        link: /#
+        icon: document-text
+      - name: Privacy
+        group: false
+        link: /#
+        icon: shield-check
+      

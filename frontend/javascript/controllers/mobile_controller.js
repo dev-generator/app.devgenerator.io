@@ -1,10 +1,10 @@
 import {Controller} from 'stimulus';
 
 export default class extends Controller {
-  static targets = ['menu'];
+  static targets = ['menu', 'overlay', 'sidebar'];
 
   connect() {
-    this.toggleClass = this.data.get('class') || 'hidden';
+    this.toggleClass = 'hidden';
     this.visibleClass = this.data.get('visibleClass') || null;
     this.invisibleClass = this.data.get('invisibleClass') || null;
     this.activeClass = this.data.get('activeClass') || null;
@@ -24,42 +24,33 @@ export default class extends Controller {
 
   _show() {
     this.menuTarget.classList.remove(this.toggleClass)
-    this._enteringClassList.forEach(
-      (klass => {
-        this.menuTarget.classList.add(klass)
-      }).bind(this),
-    )
 
     requestAnimationFrame(
       (() => {
-        this._visibleClassList.forEach(klass => {
-          this.menuTarget.classList.add(klass)
-        })
-        this._activeClassList.forEach(klass => {
-          this.activeTarget.classList.add(klass)
-        })
-        this._invisibleClassList.forEach(klass => this.menuTarget.classList.remove(klass))
+        this.overlayTarget.classList.add('opacity-100');
+        this.sidebarTarget.classList.add('translate-x-0');
+        
+        this.overlayTarget.classList.remove('opacity-0');
         setTimeout(
           (() => {
-            this._enteringClassList.forEach(klass => this.menuTarget.classList.remove(klass))
+            this.sidebarTarget.classList.remove('-translate-x-full');
           }).bind(this),
-          this.enterTimeout,
+          50,
         )
       }).bind(this),
     )
   }
 
   _hide() {
-    this._invisibleClassList.forEach(klass => this.menuTarget.classList.add(klass))
-    this._visibleClassList.forEach(klass => this.menuTarget.classList.remove(klass))
-    this._activeClassList.forEach(klass => this.activeTarget.classList.remove(klass))
-    this._leavingClassList.forEach(klass => this.menuTarget.classList.add(klass))
+    this.overlayTarget.classList.remove('opacity-100');
+    this.overlayTarget.classList.add('opacity-0');
+    this.sidebarTarget.classList.remove('translate-x-0');
+    this.sidebarTarget.classList.add('-translate-x-full');
     setTimeout(
       (() => {
         this.menuTarget.classList.add(this.toggleClass)
-        this._leavingClassList.forEach(klass => this.menuTarget.classList.remove(klass))
       }).bind(this),
-      this.leaveTimeout,
+      250,
     )
   }
 
