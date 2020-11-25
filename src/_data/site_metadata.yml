@@ -5,3 +5,10 @@ tagline: Generate Config files for the likes of Rubocop, Package.json
 email: devgenerator@chiefpansancolt.live
 description: Generate files for various linters, base files, etc. without having to manually create or remember every available input that has to go into a file.
 copyright: "&copy; 2020 Dev Generator. All rights reserved."
+twitter: https://twitter.com/dev_generator
+github: https://github.com/dev-generator/devgenerator.io
+discord: https://discord..com/invite/fzXW3rW
+footer:
+  twitter_tooltip: Get Latest Updates about the Tool!
+  github_tooltip: Checkout the Repo and see how this is built!
+  discord_tooltip: Join the Community and chat with other users of the site!
