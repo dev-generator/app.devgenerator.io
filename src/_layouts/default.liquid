@@ -14,7 +14,9 @@
             <main class="flex-1 relative pb-8 z-0 overflow-y-auto">
                 {{ content }}
             </main>
-            {% render "main/footer", labels: site.metadata %}
+            {% if page.footer %}
+                {% render "main/footer", labels: site.metadata %}
+            {% endif %}
         </div>
     </body>
 </html>
