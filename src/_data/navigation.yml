@@ -17,7 +17,7 @@ main:
         group: true
         icon: nodejs
         children:
-          - name: Packagejson
+          - name: Package.json
             link: /#
             icon: npm
   - name: section 2
@@ -25,14 +25,14 @@ main:
     children:
       - name: Help
         group: false
-        link: /#
+        link: /help/
         icon: question-mark-circle
       - name: Documentation
         group: false
-        link: /#
+        link: /documentation/
         icon: document-text
       - name: Privacy
         group: false
-        link: /#
+        link: /privacy/
         icon: shield-check
       
