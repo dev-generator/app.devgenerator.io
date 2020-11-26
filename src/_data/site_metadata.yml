@@ -12,3 +12,14 @@ footer:
   twitter_tooltip: Get Latest Updates about the Tool!
   github_tooltip: Checkout the Repo and see how this is built!
   discord_tooltip: Join the Community and chat with other users of the site!
+features:
+  link_new: "https://github.com/dev-generator/app.devgenerator.io/issues/new?assignees=chiefpansancolt&labels=enhancement%2C+new&template=feature-request.md&title=Feature+Request:"
+banner:
+  details: Don't see a generator? Submit a request for it!
+  btn: Request Generator
+home:
+  title: Getting Started with Dev Generator
+  available: Latest Generators Available
+  updates: Latest Updates
+  btn: View all the latest updates
+  btn_link: https://github.com/dev-generator/app.devgenerator.io/releases
