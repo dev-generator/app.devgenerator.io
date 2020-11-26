@@ -1,0 +1,29 @@
+generators:
+  - name: Rubocop
+    status: New
+    link: /
+    logo: rubocop
+  - name: Package.json
+    status: New
+    link: /
+    logo: npm
+  - name: Haml Lint
+    status: Coming Soon
+    link: /
+    logo: haml
+  - name: Eslint
+    status: Coming Soon
+    link: /
+    logo: eslint
+  - name: Markdown Lint
+    status: Coming Soon
+    link: /
+    logo: markdown
+  - name: Stylelint
+    status: Coming Soon
+    link: /
+    logo: stylelint
+  - name: HTML Lint
+    status: Coming Soon
+    link: /
+    logo: html
