@@ -15,11 +15,13 @@ module.exports = {
       'red': colors.red,
       'yellow': colors.amber,
       'green': colors.emerald,
+      'lime': colors.lime,
       'blue': colors.blue,
       'indigo': colors.indigo,
       'purple': colors.violet,
       'pink': colors.pink,
       'light-blue': colors.lightBlue,
+      'amber': colors.amber,
     },
     extend: {
       fontFamily: {
