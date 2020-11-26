@@ -35,3 +35,25 @@ function updateDarkModeToggle(theme) {
     darkModeToggle.dataset.switchOn = 'false';
   }
 }
+
+const currentPath = window.location.href;
+const elements = document.querySelectorAll('[name="navigation"]');
+
+for (let i = 0; i < elements.length; i++) {
+  if (elements[i].href == currentPath) {
+    elements[i].classList.remove('text-gray-800', 'dark:text-gray-100', 'hover:text-white', 'hover:bg-purple-500');
+    elements[i].classList.add('bg-purple-700', 'text-white');
+    if (elements.[i].children[0].localName == 'svg') {
+      elements.[i].children[0].classList.remove('text-gray-800', 'dark:text-gray-100', 'group-hover:text-gray-50');
+      elements.[i].children[0].classList.add('text-white');
+    }
+    elements.[i].children
+  } else {
+    elements[i].classList.remove('bg-purple-700', 'text-white');
+    elements[i].classList.add('text-gray-800', 'dark:text-gray-100', 'hover:text-white', 'hover:bg-purple-500');
+    if (elements.[i].children[0].localName == 'svg') {
+      elements.[i].children[0].classList.remove('text-white');
+      elements.[i].children[0].classList.add('text-gray-800', 'dark:text-gray-100', 'group-hover:text-gray-50');
+    }
+  }
+}
