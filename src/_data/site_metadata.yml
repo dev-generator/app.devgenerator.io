@@ -23,3 +23,26 @@ home:
   updates: Latest Updates
   btn: View all the latest updates
   btn_link: https://github.com/dev-generator/app.devgenerator.io/releases
+generator:
+  upload: Upload
+  generate: Generate
+  documentation: Documentation
+  packagejson:
+    upload:
+      title: Upload Existing File
+      details: Upload an existing version by copy/paste to the textarea or upload via dropzone.
+      code_snippet_label: Document
+      code_snippet_placeholder: Code Snippet
+      code_snippet_helptext: Paste your code in the text box above.
+      doc_upload_label: Upload Document
+      doc_upload_button: Upload a file
+      doc_upload_button_subtitle: or drag and drop
+      doc_upload_accepted_details: .JSON up to 2MB
+      accept_docs: application/json
+      no_files_selected: No Files Selected
+    output:
+      language: json
+      title: Generated Output
+      details: Copy or download outputed generation of your config data entry.
+      copy_button_label: Copy
+      download_button_label: Download
