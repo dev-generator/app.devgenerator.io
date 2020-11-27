@@ -24,6 +24,6 @@ generators:
     children:
       - name: Package.json
         logo: npm
-        link: /
+        link: /generators/node_modules/packagejson/
         status: New
         hasStatus: true

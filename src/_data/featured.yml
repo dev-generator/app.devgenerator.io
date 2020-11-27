@@ -5,7 +5,7 @@ generators:
     logo: rubocop
   - name: Package.json
     status: New
-    link: /
+    link: /generators/node_modules/packagejson/
     logo: npm
   - name: Haml Lint
     status: Coming Soon
