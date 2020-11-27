@@ -78,6 +78,7 @@
     "babel-plugin-prismjs": "^2.0.1",
     "bridgetown-quick-search": "1.0.5",
     "file-saver": "^2.0.2",
+    "heroicons": "^0.4.2",
     "postcss": "^8.1.7",
     "prismjs": "^1.22.0",
     "tailwindcss": "^2.0.1"
