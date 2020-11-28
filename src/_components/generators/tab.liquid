@@ -1,0 +1,28 @@
+---
+name: Tab
+description: Tab item for generators.
+variables:
+    title:
+        - string
+    id:
+        - string
+    first:
+        - boolean
+    icon:
+        - string
+---
+
+{% if first %}
+    {% assign classNames = "group bg-purple-50 border-l-4 border-purple-500 px-3 py-2 flex items-center text-sm font-medium text-purple-700 hover:bg-purple-50 hover:text-purple-700" %}
+    {% assign iconClassNames = "flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-purple-500 group-hover:text-purple-500" %}
+{% else %}
+    {% assign classNames = "group mt-1 border-l-4 border-transparent px-3 py-2 flex items-center text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-50 dark:hover:bg-gray-600 dark:hover:text-gray-50" %}
+    {% assign iconClassNames = "flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-50 dark:group-hover:text-gray-50" %}
+{% endif %}
+
+<a href="#{{ id }}" data-target="tabs.tab" data-action="click->tabs#change" class="{{ classNames }}">
+    {% svg "/assets/images/heroicons/outline/{{ icon }}.svg" class="{{ iconClassNames }}" %}
+    <span class="truncate">
+        {{ title }}
+    </span>
+</a>
