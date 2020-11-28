@@ -40,6 +40,9 @@ generator:
       doc_upload_accepted_details: .JSON up to 2MB
       accept_docs: application/json
       no_files_selected: No Files Selected
+    input:
+      back_btn_label: Back
+      next_btn_label: Next
     output:
       language: json
       title: Generated Output
