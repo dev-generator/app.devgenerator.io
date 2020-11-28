@@ -1,7 +1,8 @@
 details:
   - title: Core Details
-    uniqueName: core_details_section
-    first: true
+    icon: identification
+    uniqueName: core-details
+    details: Core fields apart of the list
     fields:
       - name: Name
         uniqueName: name
@@ -35,8 +36,9 @@ details:
         defaultValue: ""
         fieldType: textarea
   - title: Scripts
-    uniqueName: scripts_section
-    first: false
+    details: Scripts used to run via command line specific to the project.
+    icon: code
+    uniqueName: scripts
     fields:
       - name: Scripts
         uniqueName: scripts
@@ -50,8 +52,9 @@ details:
             uniqueName: script
             placeholder: Command to Run
   - title: Links
+    icon: link
     uniqueName: links_section
-    first: false
+    details: Various links found in the output.
     fields:
       - name: Homepage
         uniqueName: homepage
@@ -123,8 +126,9 @@ details:
             uniqueName: url
             placeholder: Link to Funding
   - title: Files
+    icon: collection
     uniqueName: files_section
-    first: false
+    details: Varing inputs for items referencing files apart of the project.
     fields:
       - name: Files
         uniqueName: files
@@ -158,8 +162,9 @@ details:
         defaultValue: ""
         fieldType: text
   - title: Engine
+    details: Anthing related to engines or operating system details/restrictions
+    icon: key
     uniqueName: engine_section
-    first: false
     fields:
       - name: Engines
         uniqueName: engines
@@ -183,8 +188,9 @@ details:
         defaultValue: ""
         fieldType: textarea
   - title: Node Modules
+    details: Anything related to references to node modules and there versions.
+    icon: chip
     uniqueName: node_modules_section
-    first: false
     fields:
       - name: Dependencies
         uniqueName: dependencies
