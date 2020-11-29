@@ -6,6 +6,7 @@ import Navigation from './utils/navigation';
 
 import '../styles/index.scss';
 import './utils/file-upload';
+import './generators/node_modules/packagejson';
 
 const application = Application.start();
 const context = require.context('./controllers', true, /\.js$/);
