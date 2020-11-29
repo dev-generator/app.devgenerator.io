@@ -1,0 +1,26 @@
+---
+name: Multi Column
+description: Multi Column Field
+variables:
+    uniqueName:
+        - string
+    fieldSize:
+        - string
+    gridSize:
+        - string
+    fields:
+        - data
+---
+
+<div class="w-full grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-{{ gridSize }}">
+    {% for field in fields %}
+        <div class="sm:col-span-{{ fieldSize }}">
+            <label for="{{ field.uniqueName }}" class="block text-sm font-medium leading-5 text-gray-700 dark:text-gray-100">{{ field.name }}</label>
+            <div class="mt-1 rounded-md shadow-sm">
+                {% if field.fieldType == "text" %}
+                    {% render "forms/fields/input_text", uniqueName: field.uniqueName %}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
