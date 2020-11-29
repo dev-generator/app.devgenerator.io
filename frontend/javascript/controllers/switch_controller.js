@@ -11,6 +11,10 @@ export default class extends Controller {
     this.enterTimeout = parseInt(this.data.get('enterTimeout')) || 0;
     this.leavingClass = this.data.get('leavingClass') || null;
     this.leaveTimeout = parseInt(this.data.get('leaveTimeout')) || 0;
+    this.darkMode = this.data.get('darkMode') || 'false';
+    if (this.darkMode != 'true') {
+      this.toggle();
+    }
   }
 
   toggle() {
@@ -27,8 +31,10 @@ export default class extends Controller {
     this.toggleTarget.classList.remove('translate-x-0');
     this.toggleTarget.classList.add(this.activeClass);
     this.data.set('on', 'true');
-    localStorage.theme  = 'dark';
-    document.querySelector('html').classList.add('dark');
+    if (this.darkMode == 'true') {
+      localStorage.theme  = 'dark';
+      document.querySelector('html').classList.add('dark');
+    }
 
     this._leavingClassList.forEach(
       (klass => {
@@ -65,8 +71,11 @@ export default class extends Controller {
     this.toggleTarget.classList.remove(this.activeClass);
     this.toggleTarget.classList.add('translate-x-0');
     this.data.set('on', 'false');
-    localStorage.theme = 'light';
-    document.querySelector('html').classList.remove('dark');
+    if (this.darkMode == 'true') {
+      localStorage.theme = 'light';
+      document.querySelector('html').classList.remove('dark');
+    }
+    
 
     this._leavingClassList.forEach(
       (klass => {
