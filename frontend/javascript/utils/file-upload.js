@@ -21,28 +21,18 @@ function addFile(target, file) {
   };
 
   target.prepend(clone);
-  document.getElementById('step1-next-btn').classList.remove('hidden');
 
   FILES[objectURL] = file;
 }
 
 const gallery = document.getElementById('gallery');
 const hidden = document.getElementById('file-hidden-input');
-const doc = document.getElementById('document');
 const uploadButton = document.getElementById('upload-button');
 if (uploadButton) {
   uploadButton.onclick = () => hidden.click();
   hidden.onchange = (e) => {
     for (const file of e.target.files) {
       addFile(gallery, file);
-    }
-  };
-}
-
-if (doc) {
-  doc.onchange = (e) => {
-    if (e.target.value) {
-      document.getElementById('step1-next-btn').classList.remove('hidden');
     }
   };
 }
@@ -91,6 +81,7 @@ if (gallery) {
       document.getElementById(ou).remove(ou);
       gallery.children.length === 1 && empty.classList.remove('hidden');
       delete FILES[ou];
+      document.getElementById('document').value = '';
     }
   };
 }
