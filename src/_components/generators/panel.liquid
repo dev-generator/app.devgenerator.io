@@ -35,7 +35,7 @@ variables:
 
         <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
             {% for field in fields %}
-                {% render "forms/core", name: field.name, uniqueName: field.uniqueName, required: field.required, defaultValue: field.defaultValue, fieldType: field.fieldType, %}
+                {% render "forms/core", name: field.name, uniqueName: field.uniqueName, required: field.required, defaultValue: field.defaultValue, fieldType: field.fieldType, extraDetails: field.extraDetails, fieldSize: field.fieldSize, gridSize: field.gridSize, fields: field.fields %}
             {% endfor %}
         </div>
     </div>

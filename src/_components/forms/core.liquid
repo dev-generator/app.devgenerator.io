@@ -12,6 +12,14 @@ variables:
         - string
     fieldType:
         - string
+    extraDetails:
+        - string
+    fieldSize:
+        - string
+    gridSize:
+        - string
+    fields:
+        - data
 ---
 
 <div id="{{ uniqueName }}-group" class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -22,9 +30,15 @@ variables:
         </label>
     </div>
     <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg flex rounded-md shadow-sm">
+        <div class="max-w-lg flex">
             {% if fieldType == "text" %}
                 {% render "forms/fields/input_text", uniqueName: uniqueName, defaultValue: defaultValue %}
+            {% elsif fieldType == "textarea" %}
+                {% render "forms/fields/input_textarea", uniqueName: uniqueName, defaultValue: defaultValue %}
+            {% elsif fieldType == "checkbox" %}
+                {% render "forms/fields/input_checkbox", uniqueName: uniqueName, defaultValue: defaultValue, extraDetails: extraDetails %}
+            {% elsif fieldType == "multipleColumn" %}
+                {% render "forms/fields/multi_column", uniqueName: uniqueName, fieldSize: fieldSize, gridSize: gridSize, fields: fields %}
             {% endif %}
         </div>
     </div>
