@@ -1,17 +1,18 @@
 import {Controller} from 'stimulus';
+import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
-  static targets = ['menu', 'overlay', 'sidebar'];
+  static targets = [CONSTANTS.TARGETS.MENU, CONSTANTS.TARGETS.OVERLAY, CONSTANTS.TARGETS.SIDEBAR];
 
   connect() {
-    this.toggleClass = 'hidden';
-    this.visibleClass = this.data.get('visibleClass') || null;
-    this.invisibleClass = this.data.get('invisibleClass') || null;
-    this.activeClass = this.data.get('activeClass') || null;
-    this.enteringClass = this.data.get('enteringClass') || null;
-    this.enterTimeout = parseInt(this.data.get('enterTimeout')) || 0;
-    this.leavingClass = this.data.get('leavingClass') || null;
-    this.leaveTimeout = parseInt(this.data.get('leaveTimeout')) || 0;
+    this.toggleClass = CONSTANTS.HIDDEN;
+    this.visibleClass = this.data.get(CONSTANTS.VISIBLECLASS) || null;
+    this.invisibleClass = this.data.get(CONSTANTS.INVISIBLECLASS) || null;
+    this.activeClass = this.data.get(CONSTANTS.ACTIVECLASS) || null;
+    this.enteringClass = this.data.get(CONSTANTS.ENTERINGCLASS) || null;
+    this.enterTimeout = parseInt(this.data.get(CONSTANTS.ENTERTIMEOUT)) || 0;
+    this.leavingClass = this.data.get(CONSTANTS.LEAVINGCLASS) || null;
+    this.leaveTimeout = parseInt(this.data.get(CONSTANTS.LEAVINGTIMEOUT)) || 0;
   }
 
   toggle() {
@@ -27,13 +28,13 @@ export default class extends Controller {
 
     requestAnimationFrame(
       (() => {
-        this.overlayTarget.classList.add('opacity-100');
-        this.sidebarTarget.classList.add('translate-x-0');
+        this.overlayTarget.classList.add(CONSTANTS.OPACITY.O100);
+        this.sidebarTarget.classList.add(CONSTANTS.TRANSLATE.X0);
         
-        this.overlayTarget.classList.remove('opacity-0');
+        this.overlayTarget.classList.remove(CONSTANTS.OPACITY.O0);
         setTimeout(
           (() => {
-            this.sidebarTarget.classList.remove('-translate-x-full');
+            this.sidebarTarget.classList.remove(CONSTANTS.TRANSLATE.NEGXFULL);
           }).bind(this),
           50,
         )
@@ -42,10 +43,10 @@ export default class extends Controller {
   }
 
   _hide() {
-    this.overlayTarget.classList.remove('opacity-100');
-    this.overlayTarget.classList.add('opacity-0');
-    this.sidebarTarget.classList.remove('translate-x-0');
-    this.sidebarTarget.classList.add('-translate-x-full');
+    this.overlayTarget.classList.remove(CONSTANTS.OPACITY.O100);
+    this.overlayTarget.classList.add(CONSTANTS.OPACITY.O0);
+    this.sidebarTarget.classList.remove(CONSTANTS.TRANSLATE.X0);
+    this.sidebarTarget.classList.add(CONSTANTS.TRANSLATE.NEGXFULL);
     setTimeout(
       (() => {
         this.menuTarget.classList.add(this.toggleClass)
@@ -65,28 +66,28 @@ export default class extends Controller {
   }
 
   get activeTarget() {
-    return this.data.has('activeTarget')
-      ? document.querySelector(this.data.get('activeTarget'))
+    return this.data.has(CONSTANTS.ACTIVETARGET)
+      ? document.querySelector(this.data.get(CONSTANTS.ACTIVETARGET))
       : this.element;
   }
 
   get _activeClassList() {
-    return !this.activeClass ? [] : this.activeClass.split(' ');
+    return !this.activeClass ? [] : this.activeClass.split(CONSTANTS.BLANKSPACE);
   }
 
   get _visibleClassList() {
-    return !this.visibleClass ? [] : this.visibleClass.split(' ');
+    return !this.visibleClass ? [] : this.visibleClass.split(CONSTANTS.BLANKSPACE);
   }
 
   get _invisibleClassList() {
-    return !this.invisibleClass ? [] : this.invisibleClass.split(' ');
+    return !this.invisibleClass ? [] : this.invisibleClass.split(CONSTANTS.BLANKSPACE);
   }
 
   get _enteringClassList() {
-    return !this.enteringClass ? [] : this.enteringClass.split(' ');
+    return !this.enteringClass ? [] : this.enteringClass.split(CONSTANTS.BLANKSPACE);
   }
 
   get _leavingClassList() {
-    return !this.leavingClass ? [] : this.leavingClass.split(' ');
+    return !this.leavingClass ? [] : this.leavingClass.split(CONSTANTS.BLANKSPACE);
   }
 }

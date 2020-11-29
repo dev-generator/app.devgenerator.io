@@ -1,18 +1,19 @@
 import {Controller} from 'stimulus';
+import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
   open(e) {
     var target = e.currentTarget.dataset.slideoverTarget;
     var element = document.querySelector(`[data-slideover-name="${target}"]`);
-    element.classList.remove('hidden');
+    element.classList.remove(CONSTANTS.HIDDEN);
 
     requestAnimationFrame(
       (() => {
-        element.children[0].children[0].classList.add('opacity-100');
-        element.children[0].children[1].children[0].classList.add('translate-x-0');
+        element.children[0].children[0].classList.add(CONSTANTS.OPACITY.O100);
+        element.children[0].children[1].children[0].classList.add(CONSTANTS.TRANSLATE.X0);
         setTimeout(() => {
-          element.children[0].children[0].classList.remove('opacity-0');
-          element.children[0].children[1].children[0].classList.remove('translate-x-full');
+          element.children[0].children[0].classList.remove(CONSTANTS.OPACITY.O0);
+          element.children[0].children[1].children[0].classList.remove(CONSTANTS.TRANSLATE.XFULL);
         }, 25);
       }),
     );
@@ -21,15 +22,15 @@ export default class extends Controller {
   close(e) {
     var target = e.currentTarget.dataset.slideoverTarget;
     var element = document.querySelector(`[data-slideover-name="${target}"]`);
-    element.children[0].children[0].classList.remove('opacity-100');
-    element.children[0].children[0].classList.add('opacity-0');
-    element.children[0].children[1].children[0].classList.remove('translate-x-0');
-    element.children[0].children[1].children[0].classList.add('translate-x-full');
+    element.children[0].children[0].classList.remove(CONSTANTS.OPACITY.O100);
+    element.children[0].children[0].classList.add(CONSTANTS.OPACITY.O0);
+    element.children[0].children[1].children[0].classList.remove(CONSTANTS.TRANSLATE.X0);
+    element.children[0].children[1].children[0].classList.add(CONSTANTS.TRANSLATE.XFULL);
 
     requestAnimationFrame(
       (() => {
         setTimeout(() => {
-          element.classList.add('hidden');
+          element.classList.add(CONSTANTS.HIDDEN);
         }, 550);
       }),
     );

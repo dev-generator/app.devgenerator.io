@@ -1,14 +1,14 @@
 import {Controller} from 'stimulus';
+import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
-  // Show the popover
   mouseOver(event) {
     var target = event.currentTarget.dataset.popoverTarget;
-    document.querySelector(`[data-popover-name="${target}"]`).classList.remove('hidden');
+    document.querySelector(`[data-popover-name="${target}"]`).classList.remove(CONSTANTS.HIDDEN);
   }
-  // Hide the popover
+
   mouseOut(event) {
     var target = event.currentTarget.dataset.popoverTarget;
-    document.querySelector(`[data-popover-name="${target}"]`).classList.add('hidden');
+    document.querySelector(`[data-popover-name="${target}"]`).classList.add(CONSTANTS.HIDDEN);
   }
 }
