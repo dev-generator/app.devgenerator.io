@@ -1,0 +1,12 @@
+---
+name: Input Textarea
+description: Input Textarea Field
+variables:
+    uniqueName:
+        - string
+    defaultValue:
+        - string
+---
+
+<textarea id="{{ uniqueName }}" name="{{ uniqueName }}" rows="3"
+          class="max-w-lg shadow-sm block w-full focus:ring-purple-500 focus:border-purple-500 sm:text-sm border-gray-300 rounded-md">{{ defaultValue }}</textarea>
