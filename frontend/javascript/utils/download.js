@@ -1,4 +1,5 @@
 import {CONSTANTS} from '../constants';
+import {saveAs} from 'file-saver';
 
 export default class Download {
   constructor(code, filename, filemeta) {
