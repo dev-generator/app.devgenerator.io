@@ -1,13 +1,14 @@
-import { Controller } from 'stimulus'
+import {Controller} from 'stimulus'
+import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
-  static targets = ['tab', 'panel']
+  static targets = [CONSTANTS.TARGETS.TAB, CONSTANTS.TARGETS.PANEL]
 
   connect() {
-    this.activeTabClasses = (this.data.get('activeTab') || 'active').split(' ');
-    this.inactiveTabClasses = (this.data.get('inactiveTab') || 'inactive').split(' ');
-    this.activeTabIconClasses = (this.data.get('activeTabIcon') || 'active').split(' ');
-    this.inactiveTabIconClasses = (this.data.get('inactiveTabIcon') || 'inactive').split(' ');
+    this.activeTabClasses = (this.data.get(CONSTANTS.ACTIVETAB) || CONSTANTS.ACTIVE).split(CONSTANTS.BLANKSPACE);
+    this.inactiveTabClasses = (this.data.get(CONSTANTS.INACTIVETAB) || CONSTANTS.INACTIVE).split(CONSTANTS.BLANKSPACE);
+    this.activeTabIconClasses = (this.data.get(CONSTANTS.ACTIVETABICON) || CONSTANTS.ACTIVE).split(CONSTANTS.BLANKSPACE);
+    this.inactiveTabIconClasses = (this.data.get(CONSTANTS.INACTIVETABICON) || CONSTANTS.INACTIVE).split(CONSTANTS.BLANKSPACE);
     if (this.anchor) {
       this.index = this.tabTargets.findIndex((tab) => tab.id === this.anchor)
     }
@@ -25,7 +26,7 @@ export default class extends Controller {
       this.index = this.tabTargets.indexOf(event.currentTarget);
     }
 
-    window.dispatchEvent(new CustomEvent('tsc:tab-change'));
+    window.dispatchEvent(new CustomEvent(CONSTANTS.TABCHANGE));
   }
 
   showTab() {
@@ -33,10 +34,10 @@ export default class extends Controller {
       const panel = this.panelTargets[index];
 
       if (index === this.index) {
-        panel.classList.remove('hidden');
+        panel.classList.remove(CONSTANTS.HIDDEN);
         tab.classList.remove(...this.inactiveTabClasses);
         tab.classList.add(...this.activeTabClasses);
-        if (tab.children.length > 1 && tab.children[0].localName == 'svg') {
+        if (tab.children.length > 1 && tab.children[0].localName == CONSTANTS.DOM.SVG) {
           tab.children[0].classList.remove(...this.inactiveTabIconClasses);
           tab.children[0].classList.add(...this.activeTabIconClasses);
         }
@@ -46,10 +47,10 @@ export default class extends Controller {
           location.hash = tab.id;
         }
       } else {
-        panel.classList.add('hidden');
+        panel.classList.add(CONSTANTS.HIDDEN);
         tab.classList.remove(...this.activeTabClasses);
         tab.classList.add(...this.inactiveTabClasses);
-        if (tab.children.length > 1 && tab.children[0].localName == 'svg') {
+        if (tab.children.length > 1 && tab.children[0].localName == CONSTANTS.DOM.SVG) {
           tab.children[0].classList.remove(...this.activeTabIconClasses);
           tab.children[0].classList.add(...this.inactiveTabIconClasses);
         }
@@ -58,15 +59,15 @@ export default class extends Controller {
   }
 
   get index() {
-    return parseInt(this.data.get('index') || 0);
+    return parseInt(this.data.get(CONSTANTS.INDEX) || 0);
   }
 
   set index(value) {
-    this.data.set('index', (value >= 0 ? value : 0));
+    this.data.set(CONSTANTS.INDEX, (value >= 0 ? value : 0));
     this.showTab();
   }
 
   get anchor() {
-    return (document.URL.split('#').length > 1) ? document.URL.split('#')[1] : null;
+    return (document.URL.split(CONSTANTS.HASHTAG).length > 1) ? document.URL.split(CONSTANTS.HASHTAG)[1] : null;
   }
 }
