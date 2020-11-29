@@ -30,6 +30,7 @@ generator:
   packagejson:
     upload:
       title: Upload Existing File
+      namespace: packagejson
       details: Upload an existing version by copy/paste to the textarea or upload via dropzone.
       code_snippet_label: Document
       code_snippet_placeholder: Code Snippet
@@ -40,6 +41,7 @@ generator:
       doc_upload_accepted_details: .JSON up to 2MB
       accept_docs: application/json
       no_files_selected: No Files Selected
+      link_button_label: Link
     input:
       back_btn_label: Back
       next_btn_label: Next
