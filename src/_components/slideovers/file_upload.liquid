@@ -6,6 +6,8 @@ variables:
         - data
 ---
 
+{% assign onclick = labels.namespace | append: ".getUploadDetails()" %}
+
 <div data-slideover-name="file-upload" class="hidden fixed inset-0 overflow-hidden">
     <div class="absolute inset-0 overflow-hidden">
         <div class="opacity-0 absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"></div>
@@ -34,7 +36,7 @@ variables:
                         <div class="flex-1 flex flex-col justify-between">
                             <div class="divide-y divide-gray-200">
                                 <div class="space-y-6 pt-6 pb-5 divide-y divide-gray-800 dark:divide-gray-100">
-                                    <div class="px-4 sm:px-6 pb-6">
+                                    <div class="px-4 sm:px-6">
                                         <label for="document" class="block text-sm leading-5 font-medium text-gray-700 dark:text-gray-50">
                                             {{ labels.code_snippet_label }}
                                         </label>
@@ -47,12 +49,12 @@ variables:
                                             {{ labels.code_snippet_helptext }}
                                         </p>
                                     </div>
-                                    <div class="px-4 sm:px-6 pt-8">
+                                    <div class="px-4 sm:px-6">
                                         <div>
                                             <label class="block text-sm leading-5 font-medium text-gray-700">
                                                 {{ labels.doc_upload_label }}
                                             </label>
-                                            <div id="dropzone" class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-400 dark:border-gray-50 border-dashed rounded-md">
+                                            <div id="dropzone" class="flex justify-center px-6 py-4 border-2 border-gray-400 dark:border-gray-50 border-dashed rounded-md">
                                                 <div class="text-center">
                                                     {% svg "/assets/images/icons/photo-add.svg" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-50" %}
                                                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-50">
@@ -79,6 +81,14 @@ variables:
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 px-4 border-t border-gray-200 py-5 sm:px-6">
+                        <div class="space-x-3 flex justify-end">
+                            <button data-action="click->slideover#close" data-slideover-target="file-upload" type="button" onClick="{{ onclick }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                                {% svg "/assets/images/heroicons/outline/link.svg" class="h-5 w-5 mr-2" %}
+                                {{ labels.link_button_label }}
+                            </button>
                         </div>
                     </div>
                 </form>
