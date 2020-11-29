@@ -34,6 +34,9 @@ const CONSTANTS = {
   ERRORREADING: 'Error Reading File',
   SUCCESSCOPYMSG: 'Successfully copied to clipboard!',
   GENERATORS: 'generators',
+  ERRORREADING: 'Error Reading File',
+  DOCUMENT: 'document',
+  UTF8: 'UTF-8',
   TARGETS: {
     MENU: 'menu',
     OVERLAY: 'overlay',
@@ -47,6 +50,14 @@ const CONSTANTS = {
   DOM: {
     HTML: 'html',
     SVG: 'svg',
+  },
+  DATATYPES: {
+    TEXT: 'text',
+    CHECKBOX: 'checkbox',
+    SIMPLEARRAY: 'simpleArray',
+    MULTICOLUMN: 'multipleColumn',
+    COMPLEXTABLE: 'complexTable',
+    COMPLEXARRAY: 'complexArray',
   },
   TEXT: {
     WHITE: 'text-white',
@@ -74,6 +85,7 @@ const CONSTANTS = {
   },
   TRANSLATE: {
     X0: 'translate-x-0',
+    X5: 'translate-x-5',
     X7: 'translate-x-7',
     XFULL: 'translate-x-full',
     Y0: 'translate-y-0',
