@@ -4,6 +4,8 @@ description: Generator Card Section
 variables:
     items:
         - data
+    labels:
+        - data
 ---
 
 <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x"
@@ -21,7 +23,7 @@ variables:
 
     <div class="lg:col-span-9">
         {% for item in items %}
-            {% render "generators/panel", title: item.title, id: item.uniqueName, details: item.details, fields: item.fields, first: forloop.first, last: forloop.last, index: forloop.index0, labels: site.metadata.generator.packagejson.input %}
+            {% render "generators/panel", title: item.title, id: item.uniqueName, details: item.details, fields: item.fields, first: forloop.first, last: forloop.last, index: forloop.index0, labels: labels %}
         {% endfor %}
     </div>
 </div>
