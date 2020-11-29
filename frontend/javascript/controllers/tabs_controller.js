@@ -11,23 +11,16 @@ export default class extends Controller {
     if (this.anchor) {
       this.index = this.tabTargets.findIndex((tab) => tab.id === this.anchor)
     }
-    console.log(this.anchor);
     this.showTab();
   }
 
   change(event) {
     event.preventDefault();
 
-    // If target specifies an index, use that
-    console.log(event.currentTarget.index);
     if (event.currentTarget.dataset.index) {
       this.index = event.currentTarget.dataset.index;
-
-    // If target specifies an index, use that
     } else if (event.currentTarget.dataset.id) {
       this.index = this.tabTargets.findIndex((tab) => tab.id == event.currentTarget.dataset.id);
-
-    // Otherwise, use the index of the current target
     } else {
       this.index = this.tabTargets.indexOf(event.currentTarget);
     }
@@ -48,8 +41,6 @@ export default class extends Controller {
           tab.children[0].classList.add(...this.activeTabIconClasses);
         }
 
-        // Update URL with the tab ID if it has one
-        // This will be automatically selected on page load
         if (tab.id) {
           event.preventDefault();
           location.hash = tab.id;
