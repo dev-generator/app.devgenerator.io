@@ -1,0 +1,31 @@
+---
+name: Core Field Structure
+description: Core Field Structure Section
+variables:
+    name:
+        - string
+    uniqueName:
+        - string
+    required:
+        - boolean
+    defaultValue:
+        - string
+    fieldType:
+        - string
+---
+
+<div id="group-{{ uniqueName }}" class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+    <div class="flex mt-2">
+        {% render "forms/switch", required: required %}
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-50 ml-2 mt-0.5">
+            {{ name }}
+        </label>
+    </div>
+    <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <div class="max-w-lg flex rounded-md shadow-sm">
+            {% if fieldType == "text" %}
+                {% render "forms/fields/input_text", uniqueName: uniqueName, defaultValue: defaultValue %}
+            {% endif %}
+        </div>
+    </div>
+</div>
