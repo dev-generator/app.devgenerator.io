@@ -1,0 +1,12 @@
+---
+name: Input Text
+description: Input Text Field
+variables:
+    uniqueName:
+        - string
+    defaultValue:
+        - string
+---
+
+<input type="text" name="{{ uniqueName }}" id="{{ uniqueName }}" value="{{ defaultValue }}"
+       class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-300 rounded-md"/>
