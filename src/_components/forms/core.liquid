@@ -14,9 +14,9 @@ variables:
         - string
 ---
 
-<div id="group-{{ uniqueName }}" class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+<div id="{{ uniqueName }}-group" class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
     <div class="flex mt-2">
-        {% render "forms/switch", required: required %}
+        {% render "forms/switch", required: required, id: uniqueName %}
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-50 ml-2 mt-0.5">
             {{ name }}
         </label>
