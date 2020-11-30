@@ -37,6 +37,8 @@ const CONSTANTS = {
   ERRORREADING: 'Error Reading File',
   DOCUMENT: 'document',
   UTF8: 'UTF-8',
+  RETURNNEWLINE: '\r\n',
+  DASH: '-',
   TARGETS: {
     MENU: 'menu',
     OVERLAY: 'overlay',
