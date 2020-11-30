@@ -12,7 +12,7 @@ variables:
     <div class="-my-2 overflow-x-auto">
         <div class="py-2 align-middle inline-block min-w-full px-1">
             <div class="shadow overflow-hidden border-b border-gray-200 dark:border-gray-700 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200dark:divide-gray-700" id="{{ uniqueName }}">
+                <table class="min-w-full divide-y divide-gray-200dark:divide-gray-700">
                     <thead>
                         <tr>
                             {% for field in fields %}
@@ -22,7 +22,7 @@ variables:
                             {% endfor %}
                         </tr>
                     </thead>
-                    <tbody data-target="table.tbody" class="bg-white dark:bg-gray-500 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody data-target="table.tbody" id="{{ uniqueName }}" class="bg-white dark:bg-gray-500 divide-y divide-gray-200 dark:divide-gray-700">
                         <tr>
                             {% for field in fields %}
                                 {% if forloop.last %}
@@ -43,7 +43,7 @@ variables:
     </div>
 </div>
 
-<template data-target="table.template">
+<template data-target="table.template" id="{{ uniqueName }}-template">
     <tr>
         {% for field in fields %}
             {% if forloop.last %}
