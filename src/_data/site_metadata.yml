@@ -47,6 +47,7 @@ generator:
       next_btn_label: Next
     output:
       language: json
+      namespace: packagejson
       title: Generated Output
       details: Copy or download outputed generation of your config data entry.
       copy_button_label: Copy
