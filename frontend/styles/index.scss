@@ -3,6 +3,20 @@
 
 /* purgecss end ignore */
 
+.generator {
+
+  .line-numbers .line-numbers-rows {
+    left: -30.5rem !important;
+  }
+
+  pre {
+    padding-bottom: 0 !important;
+    padding-left: 4rem !important;
+    padding-right: 0 !important;
+    padding-top: 5px !important;
+  }
+}
+
 .documentation {
 
   dt {
