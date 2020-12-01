@@ -1,46 +1,27 @@
-import ClipboardJS from 'clipboard';
 import {CONSTANTS} from '../constants';
 
 export default class Copy {
-  constructor(code) {
-    this.button = document.getElementById('copy-btn');
-    this.notification = document.getElementById('copy-notification');
-    this.success = document.getElementById('copy-notification-success');
-    this.error = document.getElementById('copy-notification-error');
-    this.text = document.getElementById('copy-notification-text');
+  constructor() {
+    this.output = document.getElementById(CONSTANTS.OUTPUTFORM);
+    this.button = document.getElementById(CONSTANTS.COPY.BUTTON);
+    this.notification = document.getElementById(CONSTANTS.COPY.NOTIFICATION);
+    this.inputTemp = document.createElement(CONSTANTS.COPY.INPUT);
 
-    if (window.location.pathname.includes(CONSTANTS.GENERATORS)) {
-      this.button.onclick = () => {
-        var clip = new ClipboardJS(this.button, {
-          'text': function() {
-            return code;
-          },
-        });
+    this.button.onclick = () => {
+      this.inputTemp.value = this.output.textContent.trim(1);
+      document.body.appendChild(this.inputTemp);
+      this.inputTemp.select();
+      document.execCommand(CONSTANTS.COPY.CMD);
+      document.body.removeChild(this.inputTemp);
 
-        clip.on(CONSTANTS.SUCCESS, () => {
-          noti.classList.remove(CONSTANTS.CLASSHIDDEN);
-          success.classList.remove(CONSTANTS.CLASSHIDDEN);
-          text.textContent = CONSTANTS.SUCCESSCOPYMSG;
-
-          this.resetText();
-        });
-
-        clip.on(CONSTANTS.ERROR, () => {
-          noti.classList.remove(CONSTANTS.CLASSHIDDEN);
-          error.classList.remove(CONSTANTS.CLASSHIDDEN);
-          text.textContent = CONSTANTS.ERRORCOPYMSG;
-
-          this.resetText();
-        });
-      };
-    }
+      this.notification.classList.remove(CONSTANTS.HIDDEN);
+      this.resetText();
+    };
   }
 
   resetText() {
     setTimeout(() => {
-      this.notification.classList.add(CONSTANTS.CLASSHIDDEN);
-      this.success.classList.add(CONSTANTS.CLASSHIDDEN);
-      this.error.classList.add(CONSTANTS.CLASSHIDDEN);
+      this.notification.classList.add(CONSTANTS.HIDDEN);
     }, 5000);
   }
 }
