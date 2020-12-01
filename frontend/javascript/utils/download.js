@@ -2,18 +2,16 @@ import {CONSTANTS} from '../constants';
 import {saveAs} from 'file-saver';
 
 export default class Download {
-  constructor(code, filename, filemeta) {
-    this.button = document.getElementById('download-btn');
+  constructor(filename, filemeta) {
+    this.button = document.getElementById(CONSTANTS.DOWNLOADBTN);
+    this.output = document.getElementById(CONSTANTS.OUTPUTFORM);
 
-    if (window.location.pathname.includes(CONSTANTS.GENERATORS)) {
-      this.button.onclick = () => {
-        var filename = filename;
-        var blob = new Blob([code], {
-          type: filemeta,
-        });
+    this.button.onclick = () => {
+      var blob = new Blob([this.output.textContent.trim(1)], {
+        type: filemeta,
+      });
 
-        saveAs(blob, filename);
-      };
-    }
+      saveAs(blob, filename);
+    };
   }
 }
