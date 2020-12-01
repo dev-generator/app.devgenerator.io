@@ -14,8 +14,8 @@ variables:
 
 {% if uniqueName == null %}
     <input type="text" name="{{ name }}" value="{{ defaultValue }}" placeholder="{{ placeholder }}"
-        class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-300 rounded-md"/>
+        class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-300 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 dark:placeholder-gray-300 rounded-md"/>
 {% else %}
     <input type="text" id="{{ uniqueName }}" value="{{ defaultValue }}" placeholder="{{ placeholder }}"
-        class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-300 rounded-md"/>
+        class="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-300 dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 dark:placeholder-gray-300 rounded-md"/>
 {% endif %}
