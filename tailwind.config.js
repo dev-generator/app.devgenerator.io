@@ -23,6 +23,9 @@ module.exports = {
       'light-blue': colors.lightBlue,
       'amber': colors.amber,
     },
+    zIndex: {
+      100: '100',
+    },
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],

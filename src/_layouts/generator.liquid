@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign onclick = page.namespace | append: ".generateOutput()" %}
+
 <div data-controller="slideover">
     <div class="bg-white dark:bg-black shadow border-l border-gray-100 dark:border-gray-600">
         <div class="px-4 sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
@@ -33,12 +35,12 @@ layout: default
                 </div>
                 <div class="mt-6 flex space-x-3 md:mt-0 md:ml-4">
                     <button data-action="click->slideover#open" data-slideover-target="file-upload" type="button"
-                        class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                         {% svg "/assets/images/heroicons/outline/upload.svg" class="h-5 w-5 mr-2" %}
                         {{ site.metadata.generator.upload }}
                     </button>
-                    <button data-action="click->slideover#open" data-slideover-target="output-code" type="button"
-                        class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                    <button data-action="click->slideover#open" data-slideover-target="output-code" type="button" onclick="{{ onclick }}"
+                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                         {% svg "/assets/images/heroicons/outline/code.svg" class="h-5 w-5 mr-2" %}
                         {{ site.metadata.generator.generate }}
                     </button>
@@ -60,6 +62,6 @@ layout: default
 </div>
 
 <!-- Notification Section -->
-<div class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
+<div class="fixed z-100 inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
     {% render "notifications/copy" %}
 </div>
