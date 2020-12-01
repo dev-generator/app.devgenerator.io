@@ -35,7 +35,7 @@ variables:
                             <div class="px-4 divide-y divide-gray-200">
                                 <div class="space-y-6 pt-6 pb-5">
                                     <div class="shadow-lg rounded-lg generator">
-                                        <pre class="language-{{ labels.language }} line-numbers rounded-lg" data-language="{{ labels.language }}">
+                                        <pre class="line-numbers rounded-lg" data-language="{{ labels.language }}">
                                             <code class="language-{{ labels.language }}" id="output-form"></code>
                                         </pre>
                                     </div>
@@ -45,11 +45,13 @@ variables:
                     </div>
                     <div class="flex-shrink-0 px-4 border-t border-gray-200 py-5 sm:px-6">
                         <div class="space-x-3 flex justify-end">
-                            <button type="button" id="copy-btn" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            <button type="button" id="copy-btn"
+                                    class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                                 {% svg "/assets/images/heroicons/outline/clipboard-list.svg" class="h-5 w-5 mr-2" %}
                                 {{ labels.copy_button_label }}
                             </button>
-                            <button type="button" id="download-btn" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            <button type="button" id="download-btn"
+                                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                                 {% svg "/assets/images/heroicons/outline/download.svg" class="h-5 w-5 mr-2" %}
                                 {{ labels.download_button_label }}
                             </button>
