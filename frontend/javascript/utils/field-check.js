@@ -8,9 +8,9 @@ export default class FieldCheck {
     this.dataType = dataType;
     this.childNames = childNames;
     this.optional = optional;
-    this.toggle = new Toggle(name + '-toggle');
+    this.toggle = new Toggle(name + CONSTANTS.TOGGLE);
     this.field = document.getElementById(name);
-    this.template = document.getElementById(name + '-template');
+    this.template = document.getElementById(name + CONSTANTS.TEMPLATE);
 
     if (this.dataType == CONSTANTS.DATATYPES.TEXT) {
       this.textField();
