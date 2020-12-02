@@ -3,7 +3,7 @@ generators:
     details: Checkout all the Ruby Gem config generators.
     unique_name: ruby-gems
     btn: Get Started
-    img: guides
+    img: node_modules
     color_from: red-500
     color_to: amber-500
     color: red
@@ -17,7 +17,7 @@ generators:
     details: Checkout all the Node Modules config generators.
     unique_name: node-modules
     btn: Get Started
-    img: guides
+    img: node_modules
     color_from: green-500
     color_to: lime-500
     color: lime
