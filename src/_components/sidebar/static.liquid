@@ -4,6 +4,8 @@ description: Static Sidebar section
 variables:
     navigation:
         - data
+    labels:
+        - data
 ---
 
 <div class="hidden lg:flex lg:flex-shrink-0">
@@ -16,6 +18,33 @@ variables:
             <nav class="mt-5 flex-1 flex flex-col divide-y divide-gray-800 dark:divide-gray-100 overflow-y-auto" aria-label="Sidebar">
                 {% render "sidebar/menu", navigation: navigation %}
             </nav>
+        </div>
+        <div class="relative border-t border-gray-800 dark:border-gray-100 bg-light-blue-500 dark:bg-gray-800 p-4">
+            <div class="flex justify-center space-x-6" data-controller="popover">
+                <a href="{{ labels.twitter }}" class="text-gray-800 dark:text-gray-100 hover:text-light-blue-400 dark:hover:text-light-blue-400 relative" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut" data-popover-target="twitter-static">
+                    <span class="sr-only">Twitter</span>
+                    {% svg "/assets/images/social-media/twitter.svg" class="h-6 w-6" %}
+                    <span data-popover-name="twitter-static" class="hidden left-2 bottom-4 p-2 absolute z-100 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                        {{ labels.footer.twitter_tooltip }}
+                    </span>
+                </a>
+
+                <a href="{{ labels.github }}" class="text-gray-800 dark:text-gray-100 hover:text-white dark:hover:text-black relative" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut" data-popover-target="github-static">
+                    <span class="sr-only">GitHub</span>
+                    {% svg "/assets/images/social-media/github.svg" class="h-6 w-6" %}
+                    <span data-popover-name="github-static" class="hidden left-2 bottom-4 p-2 absolute z-100 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                        {{ labels.footer.github_tooltip }}
+                    </span>
+                </a>
+
+                <a href="{{ labels.discord }}" class="text-gray-800 dark:text-gray-100 hover:text-indigo-400 dark:hover:text-indigo-400 relative" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut" data-popover-target="discord-static">
+                    <span class="sr-only">Discord</span>
+                    {% svg "/assets/images/social-media/discord.svg" class="h-6 w-6" %}
+                    <span data-popover-name="discord-static" class="hidden left-2 bottom-4 p-2 absolute z-100 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                        {{ labels.footer.discord_tooltip }}
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
 </div>

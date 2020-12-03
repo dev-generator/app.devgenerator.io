@@ -4,10 +4,12 @@ description: Static Sidebar section
 variables:
     navigation:
         - data
+    labels:
+        - data
 ---
 
 <div class="hidden" data-target="mobile.menu">
-    <div class="fixed inset-0 flex z-40">
+    <div class="fixed inset-0 flex z-100">
         <div data-target="mobile.overlay" class="opacity-100 fixed inset-0 transition-opacity ease-linear duration-300">
             <div class="absolute inset-0 bg-gray-600 opacity-75" aria-hidden="true"></div>
         </div>
@@ -18,13 +20,42 @@ variables:
                     {% svg "/assets/images/heroicons/outline/x.svg" class="h-6 w-6 text-white" %}
                 </button>
             </div>
-            <div class="flex-shrink-0 flex items-center px-4">
-                <img class="h-20 w-auto -mt-4 block dark:hidden" src="/assets/images/logo/Dev Generator Logo.png" alt="Dev Generator logo">
-                <img class="h-20 w-auto -mt-4 hidden dark:block" src="/assets/images/logo/Dev Generator Logo White.png" alt="Dev Generator logo">
+            <div class="flex flex-col flex-grow">
+                <div class="flex-shrink-0 flex items-center px-4">
+                    <img class="h-20 w-auto -mt-4 block dark:hidden" src="/assets/images/logo/Dev Generator Logo.png" alt="Dev Generator logo">
+                    <img class="h-20 w-auto -mt-4 hidden dark:block" src="/assets/images/logo/Dev Generator Logo White.png" alt="Dev Generator logo">
+                </div>
+                <nav class="mt-5 flex-shrink-0 h-full divide-y divide-gray-800 dark:divide-gray-100 overflow-y-auto" aria-label="Sidebar">
+                    {% render "sidebar/menu", navigation: navigation %}
+                </nav>
             </div>
-            <nav class="mt-5 flex-shrink-0 h-full divide-y divide-gray-800 dark:divide-gray-100 overflow-y-auto" aria-label="Sidebar">
-                {% render "sidebar/menu", navigation: navigation %}
-            </nav>
+            <div class="relative border-t border-gray-800 dark:border-gray-100 bg-light-blue-500 dark:bg-gray-800 p-4">
+                <div class="flex justify-center space-x-6" data-controller="popover">
+                    <a href="{{ labels.twitter }}" class="text-gray-800 dark:text-gray-100 hover:text-light-blue-400 dark:hover:text-light-blue-400 relative" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut" data-popover-target="twitter-mobile">
+                        <span class="sr-only">Twitter</span>
+                        {% svg "/assets/images/social-media/twitter.svg" class="h-6 w-6" %}
+                        <span data-popover-name="twitter-mobile" class="hidden left-2 bottom-4 p-2 absolute z-100 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                            {{ labels.footer.twitter_tooltip }}
+                        </span>
+                    </a>
+
+                    <a href="{{ labels.github }}" class="text-gray-800 dark:text-gray-100 hover:text-white dark:hover:text-black relative" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut" data-popover-target="github-mobile">
+                        <span class="sr-only">GitHub</span>
+                        {% svg "/assets/images/social-media/github.svg" class="h-6 w-6" %}
+                        <span data-popover-name="github-mobile" class="hidden left-2 bottom-4 p-2 absolute z-100 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                            {{ labels.footer.github_tooltip }}
+                        </span>
+                    </a>
+
+                    <a href="{{ labels.discord }}" class="text-gray-800 dark:text-gray-100 hover:text-indigo-400 dark:hover:text-indigo-400 relative" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut" data-popover-target="discord-mobile">
+                        <span class="sr-only">Discord</span>
+                        {% svg "/assets/images/social-media/discord.svg" class="h-6 w-6" %}
+                        <span data-popover-name="discord-mobile" class="hidden left-2 bottom-4 p-2 absolute z-100 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                            {{ labels.footer.discord_tooltip }}
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="flex-shrink-0 w-14" aria-hidden="true"></div>
     </div>
