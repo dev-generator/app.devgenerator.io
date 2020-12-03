@@ -1,12 +1,12 @@
 generators:
-  - name: Rubocop
-    status: New
-    link: /
-    logo: rubocop
   - name: Package.json
     status: New
     link: /generators/node_modules/packagejson/
     logo: npm
+  - name: Rubocop
+    status: Coming Soon
+    link: /
+    logo: rubocop
   - name: Haml Lint
     status: Coming Soon
     link: /
