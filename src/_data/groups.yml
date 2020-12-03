@@ -11,7 +11,7 @@ generators:
       - name: Rubocop
         logo: rubocop
         link: /
-        status: New
+        status: Coming Soon
         hasStatus: true
   - name: Node Modules
     details: Checkout all the Node Modules config generators.
