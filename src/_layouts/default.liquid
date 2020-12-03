@@ -6,8 +6,8 @@
 
     <body class="h-screen flex overflow-hidden bg-gray-100 dark:bg-gray-900" data-controller="mobile">
         
-        {% render "sidebar/mobile", navigation: site.data.navigation.main %}
-        {% render "sidebar/static", navigation: site.data.navigation.main %}
+        {% render "sidebar/mobile", navigation: site.data.navigation.main, labels: site.metadata %}
+        {% render "sidebar/static", navigation: site.data.navigation.main, labels: site.metadata %}
 
         <div class="flex-1 overflow-auto focus:outline-none" tabindex="0">
             {% render "main/header" %}
