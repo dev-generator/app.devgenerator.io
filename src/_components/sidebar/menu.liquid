@@ -34,6 +34,15 @@ variables:
                                 <img class="mr-4 h-6 w-6" src="/assets/images/icons/{{ groupNavItem.icon }}.svg"/>
                             {% endif %}
                             {{ groupNavItem.name }}
+                            {% if groupNavItem.badge == "new" %}
+                                <span class="ml-auto inline-block py-0.5 px-3 text-xs font-medium rounded-full bg-lime-600 text-gray-50">
+                                    New
+                                </span>
+                            {% else %}
+                                <span class="ml-auto inline-block py-0.5 px-3 text-xs font-medium rounded-full bg-purple-600 text-gray-50">
+                                    WIP
+                                </span>
+                            {% endif %}
                         </a>
                     {% endfor %}
                 </div>
