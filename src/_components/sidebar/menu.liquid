@@ -10,7 +10,7 @@ variables:
     {% if item.first %}
         <div class="px-2 space-y-1">
     {% else %}
-        <div class="mt-6 pt-6">
+        <div class="mt-6 pt-6 px-2">
     {% endif %}
         {% for navItem in item.children %}
             {% unless navItem.group %}
