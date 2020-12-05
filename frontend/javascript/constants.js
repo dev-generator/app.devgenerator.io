@@ -65,6 +65,10 @@ const CONSTANTS = {
     OFFICON: 'offIcon',
     TAB: 'tab',
     PANEL: 'panel',
+    CONTENT: 'content',
+  },
+  CLASSES: {
+    HIDE: 'hide',
   },
   DOM: {
     HTML: 'html',
