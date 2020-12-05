@@ -69,6 +69,10 @@ const CONSTANTS = {
   },
   CLASSES: {
     HIDE: 'hide',
+    OVERLAYENTER: 'overlayEntering',
+    OVERLAYLEAVE: 'overlayLeaving',
+    SIDEBARENTER: 'sidebarEntering',
+    SIDEBARLEAVE: 'sidebarLeaving',
   },
   DOM: {
     HTML: 'html',
@@ -113,7 +117,6 @@ const CONSTANTS = {
     XFULL: 'translate-x-full',
     Y0: 'translate-y-0',
     Y4: 'translate-y-4',
-    NEGXFULL: '-translate-x-full',
     SM: {
       Y0: 'translate-y-0',
     },
