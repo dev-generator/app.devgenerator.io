@@ -66,6 +66,9 @@ const CONSTANTS = {
     TAB: 'tab',
     PANEL: 'panel',
     CONTENT: 'content',
+    CONTAINER: 'container',
+    BACKGROUND: 'background',
+    VIEW: 'view',
   },
   CLASSES: {
     HIDE: 'hide',
@@ -73,6 +76,12 @@ const CONSTANTS = {
     OVERLAYLEAVE: 'overlayLeaving',
     SIDEBARENTER: 'sidebarEntering',
     SIDEBARLEAVE: 'sidebarLeaving',
+    ENTERING: 'entering',
+    LEAVING: 'leaving',
+    TOBACKGROUND: 'toBackground',
+    FROMBACKGROUND: 'fromBackground',
+    TOVIEW: 'toView',
+    FROMVIEW: 'fromView',
   },
   DOM: {
     HTML: 'html',
@@ -135,6 +144,15 @@ const CONSTANTS = {
       S100: 'sm:scale-100',
       S95: 'sm:scale-95',
     },
+  },
+  POSITION: {
+    FIXED: 'fixed',
+  },
+  OVERFLOW: {
+    HIDDEN: 'overflow-hidden',
+  },
+  INSET: {
+    X0: 'inset-x-0',
   },
 };
 
