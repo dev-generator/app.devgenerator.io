@@ -8,11 +8,12 @@ variables:
 
 {% assign onclick = labels.namespace | append: ".getUploadDetails()" %}
 
-<div data-slideover-name="file-upload" class="hidden fixed inset-0 overflow-hidden">
+<div data-slideover-target="container" data-action="click->slideover#closeBackground keyup@window->slideover#closeWithKeyboard" 
+     class="hidden fixed inset-0 overflow-hidden">
     <div class="absolute inset-0 overflow-hidden">
-        <div class="opacity-0 absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"></div>
+        <div data-slideover-target="background" class="opacity-0 absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"></div>
         <section class="absolute inset-y-0 pl-16 max-w-full right-0 flex">
-            <div class="translate-x-full w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700">
+            <div data-slideover-target="view" class="translate-x-full w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700">
                 <form class="h-full flex flex-col bg-white dark:bg-gray-700 shadow-xl">
                     <div class="flex-1 h-0 overflow-y-auto">
                         <div class="py-6 px-4 bg-purple-700 sm:px-6">
