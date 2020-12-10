@@ -44,11 +44,11 @@ export default class extends Controller {
         this.backgroundTarget.classList.remove(this.toBackgroundClass);
         this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.remove(cls));
         this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.remove(cls));
+        this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.backgroundTarget.classList.add(cls));
+        this.backgroundTarget.classList.add(this.fromBackgroundClass);
+        this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
+        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
         setTimeout(() => {
-          this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.backgroundTarget.classList.add(cls));
-          this.backgroundTarget.classList.add(this.fromBackgroundClass);
-          this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
-          this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
           this.containerTarget.classList.add(this.hideClass);
         }, 100);
       }),
