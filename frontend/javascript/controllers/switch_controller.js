@@ -115,8 +115,4 @@ export default class extends Controller {
       }).bind(this),
     );
   }
-
-  get active() {
-    return this.data.get(CONSTANTS.ON);
-  }
 }
