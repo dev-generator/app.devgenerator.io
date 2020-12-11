@@ -4,70 +4,72 @@ layout: default
 
 {% assign onclick = page.namespace | append: ".generateOutput()" %}
 
-<div class="bg-white dark:bg-gray-800 shadow border-l border-gray-100 dark:border-gray-900">
-    <div class="px-4 sm:px-6 mx-auto lg:px-8">
-        <div class="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
-            <div class="flex-1 min-w-0">
-                <div class="flex items-center">
-                    {% svg "/assets/images/icons/{{ page.icon }}.svg" class="hidden h-16 w-16 sm:block" %}
-                    <div>
-                        <div class="flex items-center">
-                            {% svg "/assets/images/icons/{{ page.icon }}.svg" class="h-16 w-16 rounded-full sm:hidden" %}
-                            <h1 class="ml-3 text-2xl font-bold leading-7 text-gray-900 dark:text-gray-50 sm:leading-9 sm:truncate">
-                                {{ page.title }}
-                            </h1>
+<div data-controller="copy" data-copy-hide-class="hidden">
+    <div class="bg-white dark:bg-gray-800 shadow border-l border-gray-100 dark:border-gray-900">
+        <div class="px-4 sm:px-6 mx-auto lg:px-8">
+            <div class="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center">
+                        {% svg "/assets/images/icons/{{ page.icon }}.svg" class="hidden h-16 w-16 sm:block" %}
+                        <div>
+                            <div class="flex items-center">
+                                {% svg "/assets/images/icons/{{ page.icon }}.svg" class="h-16 w-16 rounded-full sm:hidden" %}
+                                <h1 class="ml-3 text-2xl font-bold leading-7 text-gray-900 dark:text-gray-50 sm:leading-9 sm:truncate">
+                                    {{ page.title }}
+                                </h1>
+                            </div>
+                            <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+                                <dt class="sr-only">Group</dt>
+                                <dd class="flex items-center text-sm text-gray-500 dark:text-gray-300 font-medium capitalize sm:mr-6">
+                                    <img class="flex-shrink-0 mr-1.5 h-5 w-5" src="/assets/images/icons/{{ page.group_icon}}.svg" alt="{{ page.group_name }} Icon" />
+                                    {{ page.group_name }}
+                                </dd>
+                                <dt class="sr-only">Reference Link</dt>
+                                <dd class="mt-3 flex items-center text-sm text-gray-500 dark:text-gray-300 font-medium sm:mr-6 sm:mt-0 capitalize">
+                                    {% svg "/assets/images/heroicons/outline/link.svg" class="flex-shrink-0 mr-1.5 h-5 w-5" %}
+                                    <a href="{{ page.ref_link }}">{{ site.metadata.generator.documentation }}</a>
+                                </dd>
+                            </dl>
                         </div>
-                        <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
-                            <dt class="sr-only">Group</dt>
-                            <dd class="flex items-center text-sm text-gray-500 dark:text-gray-300 font-medium capitalize sm:mr-6">
-                                <img class="flex-shrink-0 mr-1.5 h-5 w-5" src="/assets/images/icons/{{ page.group_icon}}.svg" alt="{{ page.group_name }} Icon" />
-                                {{ page.group_name }}
-                            </dd>
-                            <dt class="sr-only">Reference Link</dt>
-                            <dd class="mt-3 flex items-center text-sm text-gray-500 dark:text-gray-300 font-medium sm:mr-6 sm:mt-0 capitalize">
-                                {% svg "/assets/images/heroicons/outline/link.svg" class="flex-shrink-0 mr-1.5 h-5 w-5" %}
-                                <a href="{{ page.ref_link }}">{{ site.metadata.generator.documentation }}</a>
-                            </dd>
-                        </dl>
+                    </div>
+                </div>
+                <div class="mt-6 flex space-x-3 md:mt-0 md:ml-4">
+                    <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
+                        data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
+                        data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
+                        <button data-action="click->slideover#open" data-slideover-target="file-upload" type="button"
+                                class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            {% svg "/assets/images/heroicons/outline/upload.svg" class="h-5 w-5 mr-2" %}
+                            {{ site.metadata.generator.upload }}
+                        </button>
+                        {% render "slideovers/file_upload", labels: site.metadata.generator[page.namespace].upload %}
+                    </div>
+                    <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
+                        data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
+                        data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
+                        <button data-action="click->slideover#open" data-slideover-target="output-code" type="button" onclick="{{ onclick }}"
+                                class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                            {% svg "/assets/images/heroicons/outline/code.svg" class="h-5 w-5 mr-2" %}
+                            {{ site.metadata.generator.generate }}
+                        </button>
+                        {% render "slideovers/output_code", labels: site.metadata.generator[page.namespace].output %}
                     </div>
                 </div>
             </div>
-            <div class="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-                <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
-                     data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
-                     data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
-                    <button data-action="click->slideover#open" data-slideover-target="file-upload" type="button"
-                            class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                        {% svg "/assets/images/heroicons/outline/upload.svg" class="h-5 w-5 mr-2" %}
-                        {{ site.metadata.generator.upload }}
-                    </button>
-                    {% render "slideovers/file_upload", labels: site.metadata.generator[page.namespace].upload %}
-                </div>
-                <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
-                     data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
-                     data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
-                    <button data-action="click->slideover#open" data-slideover-target="output-code" type="button" onclick="{{ onclick }}"
-                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                        {% svg "/assets/images/heroicons/outline/code.svg" class="h-5 w-5 mr-2" %}
-                        {{ site.metadata.generator.generate }}
-                    </button>
-                    {% render "slideovers/output_code", labels: site.metadata.generator[page.namespace].output %}
-                </div>
+        </div>
+    </div>
+
+    <div class="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible">
+        <div class="p-4 sm:p-6 xl:p-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg">
+                {{ content }}
             </div>
         </div>
     </div>
-</div>
 
-<div class="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible">
-    <div class="p-4 sm:p-6 xl:p-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg">
-            {{ content }}
-        </div>
+
+    <!-- Notification Section -->
+    <div class="fixed z-100 inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
+        {% render "notifications/copy" %}
     </div>
-</div>
-
-
-<!-- Notification Section -->
-<div class="fixed z-100 inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
-    {% render "notifications/copy" %}
 </div>

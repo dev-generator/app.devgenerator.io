@@ -72,6 +72,8 @@ const CONSTANTS = {
     VIEW: 'view',
     TBODY: 'tbody',
     TEMPLATE: 'template',
+    NOTIFICATION: 'notification',
+    OUTPUT: 'output',
   },
   CLASSES: {
     HIDE: 'hide',
