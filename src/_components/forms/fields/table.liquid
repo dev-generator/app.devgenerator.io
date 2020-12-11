@@ -22,7 +22,7 @@ variables:
                             {% endfor %}
                         </tr>
                     </thead>
-                    <tbody data-target="table.tbody" id="{{ uniqueName }}" class="bg-white dark:bg-gray-500 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody data-table-target="tbody" id="{{ uniqueName }}" class="bg-white dark:bg-gray-500 divide-y divide-gray-200 dark:divide-gray-700">
                         <tr>
                             {% for field in fields %}
                                 {% if forloop.last %}
@@ -43,7 +43,7 @@ variables:
     </div>
 </div>
 
-<template data-target="table.template" id="{{ uniqueName }}-template">
+<template data-table-target="template" id="{{ uniqueName }}-template">
     <tr>
         {% for field in fields %}
             {% if forloop.last %}

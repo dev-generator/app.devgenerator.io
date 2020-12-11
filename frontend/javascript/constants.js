@@ -8,6 +8,7 @@ const CONSTANTS = {
   LIGHT: 'light',
   THEME: 'theme',
   PREFERSCHEME: '(prefers-color-scheme: dark)',
+  CONFIRMMSG: 'Are you sure you want to remove?',
   SUCCESS: 'success',
   ERROR: 'error',
   TRUE: 'true',
@@ -69,6 +70,8 @@ const CONSTANTS = {
     CONTAINER: 'container',
     BACKGROUND: 'background',
     VIEW: 'view',
+    TBODY: 'tbody',
+    TEMPLATE: 'template',
   },
   CLASSES: {
     HIDE: 'hide',
