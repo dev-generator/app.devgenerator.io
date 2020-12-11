@@ -1,7 +1,6 @@
 import 'bridgetown-quick-search';
 import {Application} from 'stimulus';
 import {definitionsFromContext} from 'stimulus/webpack-helpers';
-import DarkModeToggle from './utils/dark-mode-toggle';
 import Navigation from './utils/navigation';
 import Copy from './utils/copy';
 import {CONSTANTS} from './constants';
@@ -14,7 +13,6 @@ const application = Application.start();
 const context = require.context('./controllers', true, /\.js$/);
 application.load(definitionsFromContext(context));
 
-new DarkModeToggle('toggle-dark-mode-btn');
 new Navigation('[name="navigation"]');
 
 if (window.location.pathname.includes(CONSTANTS.GENERATORS)) {

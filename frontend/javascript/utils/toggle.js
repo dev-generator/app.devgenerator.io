@@ -17,7 +17,7 @@ export default class Toggle {
     this.offIcon.classList.add(CONSTANTS.OPACITY.O0);
     this.onIcon.classList.remove(CONSTANTS.OPACITY.O0);
     this.onIcon.classList.add(CONSTANTS.OPACITY.O100);
-    this.button.dataset.switchOn = CONSTANTS.TRUE;
+    this.button.dataset.switchStatusValue = CONSTANTS.TRUE;
   }
 
   turnOff() {
@@ -28,10 +28,10 @@ export default class Toggle {
     this.offIcon.classList.add(CONSTANTS.OPACITY.O100);
     this.onIcon.classList.remove(CONSTANTS.OPACITY.O100);
     this.onIcon.classList.add(CONSTANTS.OPACITY.O0);
-    this.button.dataset.switchOn = CONSTANTS.FALSE;
+    this.button.dataset.switchStatusValue = CONSTANTS.FALSE;
   }
 
   isActive() {
-    return this.button.dataset.switchOn;
+    return this.button.dataset.switchStatusValue;
   }
 }
