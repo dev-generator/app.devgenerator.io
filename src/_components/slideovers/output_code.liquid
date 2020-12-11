@@ -6,7 +6,9 @@ variables:
         - data
 ---
 
-<div data-slideover-target="container" data-action="click->slideover#closeBackground keyup@window->slideover#closeWithKeyboard"
+<div data-controller="download" data-download-filename-value="{{ labels.filename }}"
+     data-download-filemeta-value="{{ labels.filemeta }}" data-slideover-target="container"
+     data-action="click->slideover#closeBackground keyup@window->slideover#closeWithKeyboard"
      class="hidden fixed inset-0 overflow-hidden">
     <div class="absolute inset-0 overflow-hidden">
         <div data-slideover-target="background" class="opacity-0 absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"></div>
@@ -37,7 +39,7 @@ variables:
                                 <div class="space-y-6 pt-6 pb-5">
                                     <div class="shadow-lg rounded-lg generator">
                                         <pre class="line-numbers rounded-lg" data-language="{{ labels.language }}">
-                                            <code class="language-{{ labels.language }}" id="output-form" data-copy-target="output"></code>
+                                            <code class="language-{{ labels.language }}" id="output-form" data-copy-target="output" data-download-target="output"></code>
                                         </pre>
                                     </div>
                                 </div>
@@ -51,7 +53,7 @@ variables:
                                 {% svg "/assets/images/heroicons/outline/clipboard-list.svg" class="h-5 w-5 mr-2" %}
                                 {{ labels.copy_button_label }}
                             </button>
-                            <button type="button" id="download-btn"
+                            <button type="button" data-action="click->download#download"
                                     class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                                 {% svg "/assets/images/heroicons/outline/download.svg" class="h-5 w-5 mr-2" %}
                                 {{ labels.download_button_label }}

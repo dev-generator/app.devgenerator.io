@@ -52,3 +52,5 @@ generator:
       details: Copy or download outputed generation of your config data entry.
       copy_button_label: Copy
       download_button_label: Download
+      filename: package.json
+      filemeta: application/json;charset=utf-8
