@@ -9,14 +9,15 @@ variables:
 ---
 
 <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x"
-    data-controller="tabs" data-tabs-active-tab="bg-purple-50 border-purple-500 text-purple-700 hover:bg-purple-50 hover:text-purple-700"
-    data-tabs-inactive-tab="mt-1 border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-50 dark:hover:bg-gray-600 dark:hover:text-gray-50"
-    data-tabs-active-tab-icon="text-purple-500 group-hover:text-purple-500"
-    data-tabs-inactive-tab-icon="text-gray-400 group-hover:text-gray-500 dark:text-gray-50 dark:group-hover:text-gray-50">
+    data-controller="tabs" data-tabs-hide-class="hidden" data-tabs-index-value="0"
+    data-tabs-active-tab-class="bg-purple-50 border-purple-500 text-purple-700 hover:bg-purple-50 hover:text-purple-700"
+    data-tabs-inactive-tab-class="mt-1 border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-50 dark:hover:bg-gray-600 dark:hover:text-gray-50"
+    data-tabs-active-tab-icon-class="text-purple-500 group-hover:text-purple-500"
+    data-tabs-inactive-tab-icon-class="text-gray-400 group-hover:text-gray-500 dark:text-gray-50 dark:group-hover:text-gray-50">
     <aside class="py-6 lg:col-span-3">
         <nav>
             {% for navItem in items %}
-                {% render "generators/tab", title: navItem.title, icon: navItem.icon, id: navItem.uniqueName, first: forloop.first %}
+                {% render "generators/tab", title: navItem.title, icon: navItem.icon, id: navItem.uniqueName, first: forloop.first, index: forloop.index0 %}
             {% endfor %}
         </nav>
     </aside>

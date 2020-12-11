@@ -10,6 +10,8 @@ variables:
         - boolean
     icon:
         - string
+    index:
+        - number
 ---
 
 {% if first %}
@@ -20,7 +22,7 @@ variables:
     {% assign iconClassNames = "flex-shrink-0 -ml-1 mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500 dark:text-gray-50 dark:group-hover:text-gray-50" %}
 {% endif %}
 
-<a href="#{{ id }}-panel" data-target="tabs.tab" data-action="click->tabs#change" class="{{ classNames }}">
+<a href="#{{ id }}-panel" data-tabs-target="tab" data-action="click->tabs#change" class="{{ classNames }}" data-index="{{ index }}">
     {% svg "/assets/images/heroicons/outline/{{ icon }}.svg" class="{{ iconClassNames }}" %}
     <span class="truncate">
         {{ title }}

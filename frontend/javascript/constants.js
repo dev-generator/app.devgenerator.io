@@ -91,6 +91,10 @@ const CONSTANTS = {
     OFFICON: 'offIcon',
     ONTOGGLE: 'onToggle',
     OFFTOGGLE: 'offToggle',
+    ACTIVETAB: 'activeTab',
+    INACTIVETAB: 'inactiveTab',
+    ACTIVETABICON: 'activeTabIcon',
+    INACTIVETABICON: 'inactiveTabIcon',
   },
   DOM: {
     HTML: 'html',
