@@ -14,7 +14,7 @@ variables:
     {% endif %}
         {% for navItem in item.children %}
             {% unless navItem.group %}
-                <a href="{{ navItem.link }}" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500" aria-current="page">
+                <a href="{{ navItem.link }}" data-navigation-target="nav" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500" aria-current="page">
                     {% svg "/assets/images/heroicons/outline/{{ navItem.icon }}.svg" class="mr-4 h-6 w-6 text-gray-800 dark:text-gray-100 group-hover:text-gray-50" %}
                     {{ navItem.name }}
                 </a>
@@ -26,7 +26,7 @@ variables:
                     </h3>
 
                     {% for groupNavItem in navItem.children %}
-                        <a href="{{ groupNavItem.link }}" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500">
+                        <a href="{{ groupNavItem.link }}" data-navigation-target="nav" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500">
                             {% if groupNavItem.icon == "rubocop" %}
                                 <img class="mr-4 h-6 w-6 block dark:hidden" src="/assets/images/icons/rubocop.svg"/>
                                 <img class="mr-4 h-6 w-6 hidden dark:block" src="/assets/images/icons/rubocop_white.svg"/>

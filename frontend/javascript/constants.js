@@ -74,6 +74,7 @@ const CONSTANTS = {
     TEMPLATE: 'template',
     NOTIFICATION: 'notification',
     OUTPUT: 'output',
+    NAV: 'nav',
   },
   CLASSES: {
     HIDE: 'hide',
@@ -97,6 +98,10 @@ const CONSTANTS = {
     INACTIVETAB: 'inactiveTab',
     ACTIVETABICON: 'activeTabIcon',
     INACTIVETABICON: 'inactiveTabIcon',
+    ACTIVE: 'active',
+    INACTIVE: 'inactive',
+    ACTIVEICON: 'activeIcon',
+    INACTIVEICON: 'inactiveIcon',
   },
   DOM: {
     HTML: 'html',
