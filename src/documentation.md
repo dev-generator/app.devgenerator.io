@@ -13,28 +13,30 @@ Hi, and welcome to the documentation. Here you will find how you can contribute 
 
 ## Table of Contents
 
+- [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
-    - [Frameworks Used](#frameworks-used)
-    - [Submitting a Feature Request](#submmiting-a-feature-request)
-    - [Contribute a Generator](#contribute-a-generator)
-    - [Contribute Other Items](#contribute-other-items)
+  - [Frameworks Used](#frameworks-used)
+  - [Submitting a Feature Request](#submitting-a-feature-request)
+  - [Contribute a Generator](#contribute-a-generator)
+  - [Contribute Other Items](#contribute-other-items)
 - [Creating a Generator](#creating-a-generator)
-    - [Starting](#starting)
-    - [Process](#process)
-    - [Conclusion](#conclusion)
+  - [Starting](#starting)
+  - [Process](#process)
+  - [Conclusion](#conclusion)
 - [Building a YAML Data Source File](#building-a-yaml-data-source-file)
-    - [Text](#text)
-    - [Textarea](#textarea)
-    - [Checkbox](#checkbox)
-    - [Multiple Column](#multiple-column)
-    - [Complex Table](#complex-table)
-    - [Complex Array](#complex-array)
+  - [Text](#text)
+  - [Textarea](#textarea)
+  - [Checkbox](#checkbox)
+  - [Multiple Column](#multiple-column)
+  - [Complex Table](#complex-table)
+  - [Complex Array](#complex-array)
 - [Building a new Field Type](#building-a-new-field-type)
 - [Working a Ticket](#working-a-ticket)
 - [Creating a Pull Request](#creating-a-pull-request)
-    - [New Generator Template](#new-generator-template)
-    - [Other Merges Template](#other-merges-template)
-- [Conclusion](#conclusion)
+  - [New Generator Template](#new-generator-template)
+  - [Other Merges Template](#other-merges-template)
+- [Conclusion](#conclusion-1)
 
 ## Getting Started
 
@@ -91,7 +93,7 @@ To begin we need to create some new files to hold our code.
 : First, we will need to determine our namespace to use this will be leveraged as the name used everywhere. For example, rubocop and packagejson are used already.
 
 **Step 2:**
-: Second, create a file to hold all the field information that will be used in the JS like the YAML file is used for the user interface. Check out `frontend/javascipt/generators/data/packagejson.js` for an example of a setup. A file should be created in the `frontend/javascript/generators/data` with the namespace chosen. Below is the starting code snippet to get started.
+: Second, create a file to hold all the field information that will be used in the JS like the YAML file is used for the user interface. Check out `frontend/javascipt/generators/data/packagejson.js` for an example of a setup. Below is the starting code snippet to get started. The FIELDS const should have a unique letter usage to start it, like PJFIELDS for example.
 
 ```javascript
 import {CONSTANTS} from '../../constants';
@@ -109,57 +111,7 @@ export {FIELDS};
 ```
 
 **Step 3:**
-: Third, create a file to hold the js code used. The file will need to be created in the following folder path, `frontend/javascript/generators/` a group + namespace, it should look like this `node_modules/pacakgejson.js`. Once, created, the base setup of the file should contain the following code found below, and replace all references to NAMESPACEREPLACE with the namespace determined in step one.
-
-```javascript
-import {CONSTANTS} from '../../constants';
-import {FIELDS} from '../data/NAMESPACEREPLACE';
-import File from '../../utils/file';
-import FieldCheck from '../../utils/field-check';
-import Toggle from '../../utils/toggle';
-import FieldOutput from '../../utils/field-output';
-import Prism from 'prismjs';
-import 'prismjs/components/prism-json';
-import Download from '../../utils/download';
-
-let CODE = '';
-
-const NAMESPACEREPLACE = {
-  getUploadDetails: function() {
-    var results = JSON.parse(new File().read());
-    for (let i = 0; i < FIELDS.length; i++) {
-      const field = FIELDS[i];
-      new FieldCheck(field.name, results, field.type, field.fields, field.optional);
-    }
-  },
-  
-  generateOutput: function() {
-    const outputForm = document.getElementById(CONSTANTS.OUTPUTFORM);
-    var text = CONSTANTS.CURLYBRAKETSTART;
-    for (let i = 0; i < FIELDS.length; i++) {
-      const field = FIELDS[i];
-      if (new Toggle(field.name + CONSTANTS.TOGGLE).isActive() == CONSTANTS.TRUE) {
-        text += new FieldOutput(field.name, field.type, field.fields).build();
-      }
-    }
-
-    if (text.slice(-2) == CONSTANTS.COMMASPACE) text = text.slice(0, -2);
-    text += CONSTANTS.CURLYBRAKETEND;
-    CODE = JSON.stringify(JSON.parse(text), null, 2);
-    outputForm.innerHTML = CONSTANTS.NEWLINE + CODE;
-    Prism.highlightAll();
-    new Download(FILENAME, FILEMETA);
-  }
-};
-
-const FILENAME = /*Replace with output file name and ext*/;
-const FILEMETA = /*Replace with the file meta type for how to save*/;
-
-window.NAMESPACEREPLACE = NAMESPACEREPLACE;
-```
-
-**Step 4:**
-: Fourth, create the view of the form to the users. This file will be created in `src/_generators/"folder of bucket"/`. Note the folder of the bucket currently fits two, either Node Modules (node_modules) or Ruby Gems (ruby_gems), choose one or create a new bucket if applicable. Then create a file name with the namespace + extension, it should look like this `pacakgejson.html`. Once created, the base setup of the file should contain the bellow code, and replace all references to NAMESPACEREPLACE with the namespace determined in step one.
+: Third, create the view of the form to the users. This file will be created in `src/_generators/"folder of bucket"/`. Note the folder of the bucket currently fits two, either Node Modules (node_modules) or Ruby Gems (ruby_gems), choose one or create a new bucket if applicable. Then create a file name with the namespace + extension, it should look like this `pacakgejson.html`. Once created, the base setup of the file should contain the bellow code, and replace all references to NAMESPACEREPLACE with the namespace determined in step one.
 
 ```html
 ---
@@ -179,10 +131,10 @@ permalink: /generators/node_modules/packagejson/
 
 ```
 
-**Step 5:**
-: Fith, get an SVG-based icon of the tool we are generating for, if one does not exist please reach out to the lead developer for a path forward on this step. The icon should be placed in the `assets/images/icons/` folder with the name of your icon.
+**Step 4:**
+: Fourth, get an SVG-based icon of the tool we are generating for, if one does not exist please reach out to the lead developer for a path forward on this step. The icon should be placed in the `assets/images/icons/` folder with the name of your icon.
 
-**Step 6:**
+**Step 5:**
 : To add a new Generator bucket you will need to update the `src/data/site_metadata.yml` file. The labels will need to be added under the "generators:" section in `src/data/site_metadata.yml` and replace the information detailed in the example below. Most labels below are typically unchanged but can be if needed. The "doc_upload_button_details" should be updated to the applicable ext used and "accept_docs" should be set if a specific ext meta-type is only allowed.
 
 ```yaml
@@ -213,7 +165,7 @@ NAMESPACEREPLACE:
     download_button_label: Download
 ```
 
-**Step 7:**
+**Step 6:**
 : Now the fun part, we need to create the data file that holds all the fields that data will be entered into from a user or populated via a pre-built file. When building this keep a few things in mind like how a field is identified in the file and how the user should or could interact with it. If you need help determining how to handle interactions feel free to reach out on the ticket to the Lead Developer for guidance. When creating a file checkout the `src/data/packagejson.yml` for an example setup. See [Building a YAML Data Souce File](#building-a-yaml-data-source-file) for what the different data capture possibilities are and how to identify them in the generator data file. Create your new file to house the fields used for this generator in this folder `src/data/` with the namespace determined in step one to look like this `packagejson.yml`.
 
 ```yaml
@@ -221,10 +173,10 @@ details:
   # All Groups will go below and are entered following the next section.
 ```
 
-**Step 8:**
-: Start updating the JS file created with how to read and generate the output based on the new fields used. I recommend doing step 7 in small chunks and moving to this step and repeating till all are created to make it easier to debug.
+**Step 7:**
+: Start updating the JS file created with how to read and generate the output based on the new fields used. I recommend doing step 6 in small chunks and moving to this step and repeating till all are created to make it easier to debug.
 
-**Step 9:**
+**Step 8:**
 : Once these pages are created and files updated, you should be able to load and navigate to this page on the local site to test out its functionality.
 
 ### Conclusion
@@ -235,7 +187,6 @@ New Files Added:
 
 - `src/_generators/*Bucket*/NAMESPACE.html`
 - `src/data/NAMESPACE.yml`
-- `frontend/javascript/generators/NAMESPACE.js`
 - `frontend/javascript/data/NAMESPACE.js`
 - `src/assets/images/icons/NAMESPACE.svg`
 
@@ -367,7 +318,7 @@ Complex Array is a mix between Multiple Columns and Complex Table to build an ar
 
 ## Building a new Field Type
 
-If you are in a situation where one of the existing field types does not statisfy your current use case, here is how to add a new field type to meet those needs. First, you will need to add a new field type file in `src/_components/forms/fields/` with the name of the field type and the liquid extension, like `input_text.liquid`. Once created copy and paste the code below. Once pasted add any additional Front Matter items to pass in and reference them where applicable. Then add in the section that has a comment tag on how the render of the new form type will work. Once created you will need to open `src/_components/forms/core.liquid` and add to the if statement your new field type. Follow the others as examples, then add to this documentation how that new Field Type works.
+If you are in a situation where one of the existing field types does not satisfy your current use case, here is how to add a new field type to meet those needs. First, you will need to add a new field type file in `src/_components/forms/fields/` with the name of the field type and the liquid extension, like `input_text.liquid`. Once created copy and paste the code below. Once pasted add any additional Front Matter items to pass in and reference them where applicable. Then add in the section that has a comment tag on how the render of the new form type will work. Once created you will need to open `src/_components/forms/core.liquid` and add to the if statement your new field type. Follow the others as examples, then add to this documentation how that new Field Type works.
 
 ```
 ---
