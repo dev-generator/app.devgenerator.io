@@ -21,6 +21,8 @@ export default class extends Controller {
         this._on();
       } else if (localStorage.theme == CONSTANTS.LIGHT) {
         this._off();
+      } else {
+        this._off();
       }
     } else {
       this.toggle();
