@@ -6,114 +6,115 @@ variables:
         - data
 ---
 
-{% assign onclick = labels.namespace | append: ".getUploadDetails()" %}
-
-<div data-slideover-target="container" data-action="click->slideover#closeBackground keyup@window->slideover#closeWithKeyboard" 
-     class="hidden fixed inset-0 overflow-hidden">
-    <div class="absolute inset-0 overflow-hidden">
-        <div data-slideover-target="background" class="opacity-0 absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"></div>
-        <section class="absolute inset-y-0 pl-16 max-w-full right-0 flex">
-            <div data-slideover-target="view" class="translate-x-full w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700">
-                <form class="h-full flex flex-col bg-white dark:bg-gray-700 shadow-xl">
-                    <div class="flex-1 h-0 overflow-y-auto">
-                        <div class="py-6 px-4 bg-purple-700 sm:px-6">
-                            <div class="flex items-center justify-between">
-                                <h2 id="slide-over-heading" class="text-lg font-medium text-white">
-                                    {{ labels.title }}
-                                </h2>
-                                <div class="ml-3 h-7 flex items-center">
-                                    <button data-action="click->slideover#close" data-slideover-target="file-upload" type="button" class="bg-purple-700 rounded-md text-gray-50 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-                                        <span class="sr-only">Close panel</span>
-                                        {% svg "/assets/images/heroicons/outline/x.svg" class="h-6 w-6" %}
-                                    </button>
+<div data-controller="upload" data-upload-hide-class="hidden" data-upload-tool-value="{{ labels.namespace }}">
+    <div data-slideover-target="container" data-action="click->slideover#closeBackground keyup@window->slideover#closeWithKeyboard" 
+        class="hidden fixed inset-0 overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div data-slideover-target="background" class="opacity-0 absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"></div>
+            <section class="absolute inset-y-0 pl-16 max-w-full right-0 flex">
+                <div data-slideover-target="view" class="translate-x-full w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700">
+                    <form class="h-full flex flex-col bg-white dark:bg-gray-700 shadow-xl">
+                        <div class="flex-1 h-0 overflow-y-auto">
+                            <div class="py-6 px-4 bg-purple-700 sm:px-6">
+                                <div class="flex items-center justify-between">
+                                    <h2 id="slide-over-heading" class="text-lg font-medium text-white">
+                                        {{ labels.title }}
+                                    </h2>
+                                    <div class="ml-3 h-7 flex items-center">
+                                        <button data-action="click->slideover#close" data-slideover-target="file-upload" type="button" class="bg-purple-700 rounded-md text-gray-50 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                                            <span class="sr-only">Close panel</span>
+                                            {% svg "/assets/images/heroicons/outline/x.svg" class="h-6 w-6" %}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mt-1">
+                                    <p class="text-sm text-gray-300">
+                                        {{ labels.details }}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="mt-1">
-                                <p class="text-sm text-gray-300">
-                                    {{ labels.details }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex-1 flex flex-col justify-between">
-                            <div class="divide-y divide-gray-200">
-                                <div class="space-y-6 pt-4 divide-y divide-gray-800 dark:divide-gray-100">
-                                    <div class="px-4 sm:px-6">
-                                        <label for="document" class="block text-sm leading-5 font-medium text-gray-700 dark:text-gray-50">
-                                            {{ labels.code_snippet_label }}
-                                        </label>
-                                        <div class="rounded-md shadow-sm">
-                                            <textarea id="document" rows="6"
-                                                class="block w-full shadow-sm sm:text-sm focus:ring-purple-500 focus:border-purple-500 border-gray-300 rounded-md"
-                                                placeholder="{{ labels.code_snippet_placeholder }}"></textarea>
-                                        </div>
-                                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ labels.code_snippet_helptext }}
-                                        </p>
-                                    </div>
-                                    <div class="px-4 sm:px-6 pt-4">
-                                        <div>
+                            <div class="flex-1 flex flex-col justify-between">
+                                <div class="divide-y divide-gray-200">
+                                    <div class="space-y-6 pt-4 divide-y divide-gray-800 dark:divide-gray-100">
+                                        <div class="px-4 sm:px-6">
                                             <label class="block text-sm leading-5 font-medium text-gray-700 dark:text-gray-50">
-                                                {{ labels.doc_upload_label }}
+                                                {{ labels.code_snippet_label }}
                                             </label>
-                                            <div id="dropzone" class="flex justify-center px-6 py-4 border-2 border-gray-400 dark:border-gray-50 border-dashed rounded-md">
-                                                <div class="text-center">
-                                                    {% svg "/assets/images/icons/photo-add.svg" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-50" %}
-                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-50">
-                                                        <input id="file-hidden-input" type="file" class="hidden" accept="{{ labels.accept_docs }}"/>
-                                                        <button id="upload-button" type="button" class="font-medium text-purple-500 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-400 focus:outline-none focus:underline transition duration-150 ease-in-out">
-                                                            {{ labels.doc_upload_button }}
-                                                        </button>
-                                                        {{ labels.doc_upload_button_subtitle }}
-                                                    </p>
-                                                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-50">
-                                                        {{ labels.doc_upload_accepted_details }}
-                                                    </p>
+                                            <div class="rounded-md shadow-sm">
+                                                <textarea data-upload-target="textarea" rows="6"
+                                                    class="block w-full shadow-sm sm:text-sm focus:ring-purple-500 focus:border-purple-500 border-gray-300 rounded-md"
+                                                    placeholder="{{ labels.code_snippet_placeholder }}"></textarea>
+                                            </div>
+                                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
+                                                {{ labels.code_snippet_helptext }}
+                                            </p>
+                                        </div>
+                                        <div class="px-4 sm:px-6 pt-4">
+                                            <div>
+                                                <label class="block text-sm leading-5 font-medium text-gray-700 dark:text-gray-50">
+                                                    {{ labels.doc_upload_label }}
+                                                </label>
+                                                <div data-action="drop->upload#dropHandler dragover->upload#dragEnterHandler dragleave->upload#dragLeaveHandler dragenter->upload#dragOverHandler"
+                                                     class="flex justify-center px-6 py-4 border-2 border-gray-400 dark:border-gray-50 border-dashed rounded-md">
+                                                    <div class="text-center">
+                                                        {% svg "/assets/images/icons/photo-add.svg" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-50" %}
+                                                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-50">
+                                                            <input data-upload-target="input" type="file" class="hidden" accept="{{ labels.accept_docs }}"/>
+                                                            <button data-action="click->upload#upload" type="button" class="font-medium text-purple-500 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-400 focus:outline-none focus:underline transition duration-150 ease-in-out">
+                                                                {{ labels.doc_upload_button }}
+                                                            </button>
+                                                            {{ labels.doc_upload_button_subtitle }}
+                                                        </p>
+                                                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-50">
+                                                            {{ labels.doc_upload_accepted_details }}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <ul id="gallery" class="flex flex-1 flex-wrap mt-7">
-                                                <li id="empty" class="h-full w-full text-center flex flex-col justify-center items-center">
-                                                    <img class="mx-auto w-32" src="https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png" alt="no data" />
-                                                    <span class="text-small text-gray-500 dark:text-gray-50">{{ labels.no_files_selected }}</span>
-                                                </li>
-                                            </ul>
+                                            <div>
+                                                <ul data-upload-target="gallery" class="flex flex-1 flex-wrap mt-7">
+                                                    <li data-upload-target="empty" class="h-full w-full text-center flex flex-col justify-center items-center">
+                                                        <img class="mx-auto w-32" src="https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png" alt="no data" />
+                                                        <span class="text-small text-gray-500 dark:text-gray-50">{{ labels.no_files_selected }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex-shrink-0 px-4 border-t border-gray-200 py-5 sm:px-6">
-                        <div class="space-x-3 flex justify-end">
-                            <button data-action="click->slideover#close" data-slideover-target="file-upload" type="button" onClick="{{ onclick }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                                {% svg "/assets/images/heroicons/outline/link.svg" class="h-5 w-5 mr-2" %}
-                                {{ labels.link_button_label }}
-                            </button>
+                        <div class="flex-shrink-0 px-4 border-t border-gray-200 py-5 sm:px-6">
+                            <div class="space-x-3 flex justify-end">
+                                <button data-action="click->slideover#close click->upload#link" data-slideover-target="file-upload" type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                                    {% svg "/assets/images/heroicons/outline/link.svg" class="h-5 w-5 mr-2" %}
+                                    {{ labels.link_button_label }}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </div>
-</div>
-
-<template id="file-template">
-    <li class="block p-1 w-full sm:w-1/2 h-24">
-        <article tabindex="0" class="group w-full h-full rounded-md elative bg-purple-500 relative shadow-sm">
-            <img alt="upload preview" class="img-preview hidden w-full h-full sticky object-cover rounded-md bg-fixed" />
-            <section class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3 text-white">
-                <h1 class="flex-1"></h1>
-                <div class="flex">
-                    <span class="p-1">
-                        <i>{% svg "/assets/images/heroicons/outline/document-text.svg" class="fill-current w-4 h-4 ml-auto pt-1" %}</i>
-                    </span>
-                    <p class="p-1 pt-1.5 size text-xs"></p>
-                    <button class="delete ml-auto focus:outline-none hover:bg-purple-700 p-1 rounded-md">
-                        {% svg "/assets/images/heroicons/outline/trash.svg" class="pointer-events-none fill-current w-4 h-4 ml-auto" %}
-                    </button>
+                    </form>
                 </div>
             </section>
-        </article>
-    </li>
-</template>
+        </div>
+    </div>
+
+    <template data-upload-target="template">
+        <li class="block p-1 w-full sm:w-1/2 h-24">
+            <article tabindex="0" class="group w-full h-full rounded-md elative bg-purple-500 relative shadow-sm">
+                <img alt="upload preview" class="img-preview hidden w-full h-full sticky object-cover rounded-md bg-fixed" />
+                <section class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3 text-white">
+                    <h1 class="flex-1"></h1>
+                    <div class="flex">
+                        <span class="p-1">
+                            <i>{% svg "/assets/images/heroicons/outline/document-text.svg" class="fill-current w-4 h-4 ml-auto pt-1" %}</i>
+                        </span>
+                        <p class="p-1 pt-1.5 size text-xs"></p>
+                        <button data-action="click->upload#delete" type="button" class="delete ml-auto focus:outline-none hover:bg-purple-700 p-1 rounded-md">
+                            {% svg "/assets/images/heroicons/outline/trash.svg" class="pointer-events-none fill-current w-4 h-4 ml-auto" %}
+                        </button>
+                    </div>
+                </section>
+            </article>
+        </li>
+    </template>
+</div>

@@ -2,8 +2,6 @@
 layout: default
 ---
 
-{% assign onclick = page.namespace | append: ".generateOutput()" %}
-
 <div data-controller="copy" data-copy-hide-class="hidden">
     <div class="bg-white dark:bg-gray-800 shadow border-l border-gray-100 dark:border-gray-900">
         <div class="px-4 sm:px-6 mx-auto lg:px-8">
@@ -37,7 +35,7 @@ layout: default
                     <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
                         data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
                         data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
-                        <button data-action="click->slideover#open" data-slideover-target="file-upload" type="button"
+                        <button data-action="click->slideover#open" type="button"
                                 class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-50 bg-white dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                             {% svg "/assets/images/heroicons/outline/upload.svg" class="h-5 w-5 mr-2" %}
                             {{ site.metadata.generator.upload }}
@@ -47,7 +45,7 @@ layout: default
                     <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
                         data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
                         data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
-                        <button data-action="click->slideover#open" data-slideover-target="output-code" type="button" onclick="{{ onclick }}"
+                        <button data-action="click->slideover#open" type="button"
                                 class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                             {% svg "/assets/images/heroicons/outline/code.svg" class="h-5 w-5 mr-2" %}
                             {{ site.metadata.generator.generate }}
