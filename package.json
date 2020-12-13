@@ -44,6 +44,7 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@fullhuman/postcss-purgecss": "^3.0.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.7",
     "concurrently": "^5.2.0",
