@@ -15,6 +15,9 @@ export default class extends Controller {
     this.hasFiles = ({dataTransfer: {types = []}}) => types.indexOf(CONSTANTS.FILE) > -1;
     this.counter = 0;
     this.reader = new FileReader();
+    if (this.toolValue == CONSTANTS.NAMESPACE.PACKAGEJSON) {
+      this.fieldsValue = PJFIELDS;
+    }
   }
 
   upload() {
@@ -53,10 +56,6 @@ export default class extends Controller {
   }
 
   link() {
-    if (this.toolValue == CONSTANTS.NAMESPACE.PACKAGEJSON) {
-      this.fieldsValue = PJFIELDS;
-    }
-
     for (let i = 0; i < this.fieldsValue.length; i++) {
       const field = this.fieldsValue[i];
       new FieldCheck(field.name, JSON.parse(this._read()), field.type, field.fields, field.optional);
