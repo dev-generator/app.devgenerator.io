@@ -8,7 +8,7 @@ import 'prismjs/components/prism-json';
 
 export default class extends Controller {
   static targets = ['output'];
-  static values = { fields: Array, text: String, tool: String };
+  static values = {fields: Array, text: String, tool: String};
 
   connect() {
     if (this.toolValue == CONSTANTS.NAMESPACE.PACKAGEJSON) {

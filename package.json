@@ -6,7 +6,7 @@
   "scripts": {
     "markdown": "markdownlint src/**/*.md .github/**/*.md CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md README.md -c .markdownlint.yml",
     "html": "html-linter --config html-linter.json",
-    "javascript": "eslint frontend/**/*.js start.js sync.js webpack.config.js tailwind.config.js postcss.config.js",
+    "javascript": "eslint frontend/javascript/*.js frontend/javascript/controllers/*.js frontend/javascript/generators/data/*.js frontend/javascript/utils/*.js start.js sync.js webpack.config.js tailwind.config.js postcss.config.js",
     "css": "stylelint frontend/**/*.scss",
     "build": "bundle exec bridgetown build",
     "serve": "bundle exec bridgetown serve",

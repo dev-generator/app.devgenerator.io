@@ -5,9 +5,9 @@ export default class extends Controller {
   static targets = [CONSTANTS.TARGETS.MENU, CONSTANTS.TARGETS.OVERLAY, CONSTANTS.TARGETS.SIDEBAR];
   static classes = [
     CONSTANTS.CLASSES.HIDE, CONSTANTS.CLASSES.OVERLAYENTER, CONSTANTS.CLASSES.OVERLAYLEAVE,
-    CONSTANTS.CLASSES.SIDEBARENTER, CONSTANTS.CLASSES.SIDEBARLEAVE
+    CONSTANTS.CLASSES.SIDEBARENTER, CONSTANTS.CLASSES.SIDEBARLEAVE,
   ];
-  static values = { entering: Number, leaving: Number};
+  static values = {entering: Number, leaving: Number};
 
   toggle() {
     if (this.hidden) {
@@ -18,22 +18,22 @@ export default class extends Controller {
   }
 
   _show() {
-    this.menuTarget.classList.remove(this.hideClass)
+    this.menuTarget.classList.remove(this.hideClass);
 
     requestAnimationFrame(
       (() => {
         this.overlayTarget.classList.add(this.overlayEnteringClass);
         this.sidebarTarget.classList.add(this.sidebarEnteringClass);
-        
+
         this.overlayTarget.classList.remove(this.overlayLeavingClass);
         setTimeout(
           (() => {
             this.sidebarTarget.classList.remove(this.sidebarLeavingClass);
-          }).bind(this),
+          }),
           this.enteringValue,
-        )
-      }).bind(this),
-    )
+        );
+      }),
+    );
   }
 
   _hide() {
@@ -43,10 +43,10 @@ export default class extends Controller {
     this.sidebarTarget.classList.add(this.sidebarLeavingClass);
     setTimeout(
       (() => {
-        this.menuTarget.classList.add(this.hideClass)
-      }).bind(this),
+        this.menuTarget.classList.add(this.hideClass);
+      }),
       this.leavingValue,
-    )
+    );
   }
 
   closeWithKeyboard(e) {

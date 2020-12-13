@@ -5,9 +5,9 @@ export default class extends Controller {
   static targets = [CONSTANTS.TARGETS.CONTAINER, CONSTANTS.TARGETS.BACKGROUND, CONSTANTS.TARGETS.VIEW];
   static classes = [
     CONSTANTS.CLASSES.HIDE, CONSTANTS.CLASSES.TOBACKGROUND, CONSTANTS.CLASSES.FROMBACKGROUND,
-    CONSTANTS.CLASSES.TOVIEW, CONSTANTS.CLASSES.FROMVIEW
+    CONSTANTS.CLASSES.TOVIEW, CONSTANTS.CLASSES.FROMVIEW,
   ];
-  static values = { allowClose: Boolean };
+  static values = {allowClose: Boolean};
 
   disconnect() {
     this.close();

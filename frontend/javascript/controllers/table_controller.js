@@ -1,5 +1,5 @@
 import {Controller} from 'stimulus';
-import { CONSTANTS } from '../constants';
+import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
   static targets = [CONSTANTS.TARGETS.TBODY, CONSTANTS.TARGETS.TEMPLATE];
@@ -10,7 +10,7 @@ export default class extends Controller {
 
   minus() {
     var msg = confirm(CONSTANTS.CONFIRMMSG);
-    if(msg) {
+    if (msg) {
       this.tbodyTarget.removeChild(this.tbodyTarget.children[this.tbodyTarget.children.length - 1]);
     }
   }

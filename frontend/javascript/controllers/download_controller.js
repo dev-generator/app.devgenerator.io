@@ -4,7 +4,7 @@ import {saveAs} from 'file-saver';
 
 export default class extends Controller {
   static targets = [CONSTANTS.TARGETS.OUTPUT];
-  static values = { filename: String, filemeta: String };
+  static values = {filename: String, filemeta: String};
 
   download() {
     var blob = new Blob([this.outputTarget.textContent.trim(1)], {

@@ -1,13 +1,13 @@
-import {Controller} from 'stimulus'
+import {Controller} from 'stimulus';
 import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
   static targets = [CONSTANTS.TARGETS.TAB, CONSTANTS.TARGETS.PANEL];
   static classes = [
     CONSTANTS.CLASSES.HIDE, CONSTANTS.CLASSES.ACTIVETAB, CONSTANTS.CLASSES.INACTIVETAB,
-    CONSTANTS.CLASSES.ACTIVETABICON, CONSTANTS.CLASSES.INACTIVETABICON
+    CONSTANTS.CLASSES.ACTIVETABICON, CONSTANTS.CLASSES.INACTIVETABICON,
   ];
-  static values = { index: Number };
+  static values = {index: Number};
 
   change(event) {
     event.preventDefault();
@@ -40,6 +40,6 @@ export default class extends Controller {
           tab.children[0].classList.add(...this.inactiveTabIconClass.split(CONSTANTS.BLANKSPACE));
         }
       }
-    })
+    });
   }
 }

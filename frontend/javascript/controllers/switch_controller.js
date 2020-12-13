@@ -4,15 +4,15 @@ import {CONSTANTS} from '../constants';
 export default class extends Controller {
   static targets = [
     CONSTANTS.TARGETS.TOGGLE, CONSTANTS.TARGETS.ONICON,
-    CONSTANTS.TARGETS.OFFICON, CONSTANTS.TARGETS.CONTAINER
+    CONSTANTS.TARGETS.OFFICON, CONSTANTS.TARGETS.CONTAINER,
   ];
   static classes = [
     CONSTANTS.CLASSES.ONICON, CONSTANTS.CLASSES.OFFICON, CONSTANTS.CLASSES.ONTOGGLE, CONSTANTS.CLASSES.OFFTOGGLE,
-    CONSTANTS.CLASSES.ENTERING, CONSTANTS.CLASSES.LEAVING, CONSTANTS.CLASSES.ONBACKGROUND, CONSTANTS.CLASSES.OFFBACKGROUND
+    CONSTANTS.CLASSES.ENTERING, CONSTANTS.CLASSES.LEAVING, CONSTANTS.CLASSES.ONBACKGROUND, CONSTANTS.CLASSES.OFFBACKGROUND,
   ];
-  static values = { 
+  static values = {
     enterTimeout: Number, leaveTimeout: Number,
-    darkMode: Boolean, status: Boolean
+    darkMode: Boolean, status: Boolean,
   };
 
   connect() {
@@ -47,15 +47,15 @@ export default class extends Controller {
     }
 
     this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(
-      (klass => {
-        this.onIconTarget.classList.remove(klass)
-      }).bind(this),
+      ((klass) => {
+        this.onIconTarget.classList.remove(klass);
+      }),
     );
 
     this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(
-      (klass => {
-        this.onIconTarget.classList.add(klass)
-      }).bind(this),
+      ((klass) => {
+        this.onIconTarget.classList.add(klass);
+      }),
     );
 
     requestAnimationFrame(
@@ -67,11 +67,11 @@ export default class extends Controller {
 
         setTimeout(
           (() => {
-            this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(klass => this.offIconTarget.classList.remove(klass));
-          }).bind(this),
+            this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.offIconTarget.classList.remove(klass));
+          }),
           this.enterTimeoutValue,
-        )
-      }).bind(this),
+        );
+      }),
     );
   }
 
@@ -85,18 +85,17 @@ export default class extends Controller {
       localStorage.theme = CONSTANTS.LIGHT;
       document.querySelector(CONSTANTS.DOM.HTML).classList.remove(CONSTANTS.DARK);
     }
-    
 
     this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(
-      (klass => {
-        this.offIconTarget.classList.remove(klass)
-      }).bind(this),
+      ((klass) => {
+        this.offIconTarget.classList.remove(klass);
+      }),
     );
 
     this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(
-      (klass => {
-        this.offIconTarget.classList.add(klass)
-      }).bind(this),
+      ((klass) => {
+        this.offIconTarget.classList.add(klass);
+      }),
     );
 
     requestAnimationFrame(
@@ -108,11 +107,11 @@ export default class extends Controller {
 
         setTimeout(
           (() => {
-            this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(klass => this.onIconTarget.classList.remove(klass));
-          }).bind(this),
+            this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.onIconTarget.classList.remove(klass));
+          }),
           this.leaveTimeoutValue,
-        )
-      }).bind(this),
+        );
+      }),
     );
   }
 }

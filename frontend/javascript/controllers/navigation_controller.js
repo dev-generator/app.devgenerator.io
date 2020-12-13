@@ -5,11 +5,11 @@ export default class extends Controller {
   static targets = [CONSTANTS.TARGETS.NAV];
   static classes = [
     CONSTANTS.CLASSES.ACTIVE, CONSTANTS.CLASSES.INACTIVE,
-    CONSTANTS.CLASSES.ACTIVEICON, CONSTANTS.CLASSES.INACTIVEICON
+    CONSTANTS.CLASSES.ACTIVEICON, CONSTANTS.CLASSES.INACTIVEICON,
   ];
 
   connect() {
-    this.navTargets.forEach(nav => {
+    this.navTargets.forEach((nav) => {
       if (nav.href == window.location.href) {
         this._active(nav);
       } else {

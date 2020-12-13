@@ -6,9 +6,9 @@ export default class extends Controller {
   static classes = [
     CONSTANTS.CLASSES.HIDE, CONSTANTS.CLASSES.ENTERING, CONSTANTS.CLASSES.LEAVING,
     CONSTANTS.CLASSES.TOBACKGROUND, CONSTANTS.CLASSES.FROMBACKGROUND, CONSTANTS.CLASSES.TOVIEW,
-    CONSTANTS.CLASSES.FROMVIEW
+    CONSTANTS.CLASSES.FROMVIEW,
   ];
-  static values = { allowClose: Boolean };
+  static values = {allowClose: Boolean};
 
   disconnect() {
     this.close();
@@ -21,15 +21,15 @@ export default class extends Controller {
 
     requestAnimationFrame(
       (() => {
-        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.backgroundTarget.classList.add(cls));
+        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.backgroundTarget.classList.add(klass));
         this.backgroundTarget.classList.add(this.toBackgroundClass);
-        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
-        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
+        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.add(klass));
+        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.add(klass));
         setTimeout(() => {
-          this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.backgroundTarget.classList.remove(cls));
+          this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.backgroundTarget.classList.remove(klass));
           this.backgroundTarget.classList.remove(this.fromBackgroundClass);
-          this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.remove(cls));
-          this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.remove(cls));
+          this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.remove(klass));
+          this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.remove(klass));
         }, 250);
       }),
     );
@@ -40,14 +40,14 @@ export default class extends Controller {
 
     requestAnimationFrame(
       (() => {
-        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.backgroundTarget.classList.remove(cls));
+        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.backgroundTarget.classList.remove(klass));
         this.backgroundTarget.classList.remove(this.toBackgroundClass);
-        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.remove(cls));
-        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.remove(cls));
-        this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.backgroundTarget.classList.add(cls));
+        this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.remove(klass));
+        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.remove(klass));
+        this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.backgroundTarget.classList.add(klass));
         this.backgroundTarget.classList.add(this.fromBackgroundClass);
-        this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
-        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach(cls => this.viewTarget.classList.add(cls));
+        this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.add(klass));
+        this.toViewClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.viewTarget.classList.add(klass));
         setTimeout(() => {
           this.containerTarget.classList.add(this.hideClass);
         }, 100);

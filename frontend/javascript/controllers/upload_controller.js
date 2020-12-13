@@ -6,10 +6,10 @@ import FieldCheck from '../utils/field-check';
 export default class extends Controller {
   static targets = [
     CONSTANTS.TARGETS.TEMPLATE, CONSTANTS.TARGETS.GALLERY, CONSTANTS.TARGETS.EMPTY,
-    CONSTANTS.TARGETS.INPUT, CONSTANTS.TARGETS.TEXTAREA, CONSTANTS.TARGETS.DROPZONE
+    CONSTANTS.TARGETS.INPUT, CONSTANTS.TARGETS.TEXTAREA, CONSTANTS.TARGETS.DROPZONE,
   ];
   static classes = [CONSTANTS.CLASSES.HIDE];
-  static values = { tool: String, fields: Array };
+  static values = {tool: String, fields: Array};
 
   connect() {
     this.hasFiles = ({dataTransfer: {types = []}}) => types.indexOf(CONSTANTS.FILE) > -1;
