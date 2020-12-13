@@ -1,6 +1,6 @@
 import {CONSTANTS} from '../../constants';
 
-const FIELDS = [
+const PJFIELDS = [
   {
     name: 'name',
     type: CONSTANTS.DATATYPES.TEXT,
@@ -159,4 +159,4 @@ const FIELDS = [
   },
 ];
 
-export {FIELDS};
+export {PJFIELDS};

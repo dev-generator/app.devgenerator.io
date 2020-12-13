@@ -36,10 +36,10 @@ variables:
         </div>
         {% if fieldType == "complexTable" or fieldType == "complexArray" %}
             <div class="ml-4">
-                <button data-action="click->table#add" id="{{ uniqueName }}-remove-btn" type="button" class="mt-4 rounded-full text-purple-700">
+                <button data-action="click->table#add" type="button" class="mt-4 rounded-full text-purple-700">
                     {% svg "assets/images/heroicons/outline/plus-circle.svg" class="h-6 w-6" %}
                 </button>
-                <button data-action="click->table#minus" id="{{ uniqueName }}-add-btn" type="button" class="mt-4 ml-2 rounded-full text-purple-700">
+                <button data-action="click->table#minus" type="button" class="mt-4 ml-2 rounded-full text-purple-700">
                     {% svg "assets/images/heroicons/outline/minus-circle.svg" class="h-6 w-6" %}
                 </button>
             </div>

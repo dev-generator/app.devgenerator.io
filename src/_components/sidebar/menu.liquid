@@ -10,23 +10,23 @@ variables:
     {% if item.first %}
         <div class="px-2 space-y-1">
     {% else %}
-        <div class="mt-6 pt-6">
+        <div class="mt-6 pt-6 px-2">
     {% endif %}
         {% for navItem in item.children %}
             {% unless navItem.group %}
-                <a href="{{ navItem.link }}" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500" aria-current="page">
+                <a href="{{ navItem.link }}" data-navigation-target="nav" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500" aria-current="page">
                     {% svg "/assets/images/heroicons/outline/{{ navItem.icon }}.svg" class="mr-4 h-6 w-6 text-gray-800 dark:text-gray-100 group-hover:text-gray-50" %}
                     {{ navItem.name }}
                 </a>
             {% else %}
                 <div class="space-y-1 pt-6">
-                    <h3 class="group flex items-center px-2 text-xs font-semibold text-white dark:text-gray-200 uppercase tracking-wider" id="projects-headline">
+                    <h3 class="group flex items-center px-2 text-xs font-semibold text-white dark:text-gray-200 uppercase tracking-wider">
                         {{ navItem.name }}
                         <img class="ml-2 h-4 w-4" src="/assets/images/icons/{{ navItem.icon }}.svg"/>
                     </h3>
 
                     {% for groupNavItem in navItem.children %}
-                        <a href="{{ groupNavItem.link }}" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500">
+                        <a href="{{ groupNavItem.link }}" data-navigation-target="nav" name="navigation" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-gray-800 dark:text-gray-100 hover:text-white hover:bg-purple-500">
                             {% if groupNavItem.icon == "rubocop" %}
                                 <img class="mr-4 h-6 w-6 block dark:hidden" src="/assets/images/icons/rubocop.svg"/>
                                 <img class="mr-4 h-6 w-6 hidden dark:block" src="/assets/images/icons/rubocop_white.svg"/>
@@ -34,6 +34,15 @@ variables:
                                 <img class="mr-4 h-6 w-6" src="/assets/images/icons/{{ groupNavItem.icon }}.svg"/>
                             {% endif %}
                             {{ groupNavItem.name }}
+                            {% if groupNavItem.badge == "new" %}
+                                <span class="ml-auto inline-block py-0.5 px-3 text-xs font-medium rounded-full bg-lime-600 text-gray-50">
+                                    New
+                                </span>
+                            {% else %}
+                                <span class="ml-auto inline-block py-0.5 px-3 text-xs font-medium rounded-full bg-purple-600 text-gray-50">
+                                    WIP
+                                </span>
+                            {% endif %}
                         </a>
                     {% endfor %}
                 </div>

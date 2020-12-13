@@ -8,10 +8,14 @@ copyright: "&copy; 2020 Dev Generator. All rights reserved."
 twitter: https://twitter.com/dev_generator
 github: https://github.com/dev-generator/devgenerator.io
 discord: https://discord..com/invite/fzXW3rW
+error:
+  header: We are sorry, Page not found!
+  subtitle: The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+  btn: Back To Homepage
 footer:
-  twitter_tooltip: Get Latest Updates about the Tool!
-  github_tooltip: Checkout the Repo and see how this is built!
-  discord_tooltip: Join the Community and chat with other users of the site!
+  twitter_tooltip: Get latest updates about the tool!
+  github_tooltip: Checkout the repo and see how this is built!
+  discord_tooltip: Join the community and chat with other users of the site!
 features:
   link_new: "https://github.com/dev-generator/app.devgenerator.io/issues/new?assignees=chiefpansancolt&labels=enhancement%2C+new&template=feature-request.md&title=Feature+Request:"
 banner:
@@ -31,7 +35,7 @@ generator:
     upload:
       title: Upload Existing File
       namespace: packagejson
-      details: Upload an existing version by copy/paste to the textarea or upload via dropzone.
+      details: Upload an existing version by coping & pasting to the textarea or upload via dropzone.
       code_snippet_label: Document
       code_snippet_placeholder: Code Snippet
       code_snippet_helptext: Paste your code in the text box above.
@@ -52,3 +56,5 @@ generator:
       details: Copy or download outputed generation of your config data entry.
       copy_button_label: Copy
       download_button_label: Download
+      filename: package.json
+      filemeta: application/json;charset=utf-8

@@ -12,18 +12,20 @@ description: Header section
     <div class="flex-1 px-4 flex justify-between sm:px-6 mx-auto lg:px-8">
         <div class="flex-1 flex"></div>
         <div class="ml-4 flex items-center md:ml-6">
-            <button data-controller="switch" data-action="click->switch#toggle" data-switch-active-class="translate-x-7"
+            <button type="button" data-controller="switch" data-action="click->switch#toggle"
+                    data-switch-target="container" data-switch-dark-mode-value="true" 
                     data-switch-entering-class="ease-out duration-150" data-switch-leaving-class="ease-in duration-100"
-                    data-switch-enter-timeout="100" data-switch-leave-timeout="75" data-switch-dark-mode="true"
-                    data-switch-invisible-class="opacity-0" data-switch-visible-class="opacity-100"
-                    type="button" id="toggle-dark-mode-btn"
+                    data-switch-enter-timeout-value="100" data-switch-leave-timeout-value="75" 
+                    data-switch-on-icon-class="opacity-100" data-switch-off-icon-class="opacity-0"
+                    data-switch-on-toggle-class="translate-x-7" data-switch-off-toggle-class="translate-x-0"
+                    data-switch-on-background-class="bg-purple-700" data-switch-off-background-class="bg-gray-200"
                     class="relative inline-flex flex-shrink-0 h-7 w-14 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:ring-purple-700">
                 <span class="sr-only">Toggle Dark Mode On/Off</span>
-                <span data-target="switch.toggle" class="relative inline-block h-6 w-6 rounded-full bg-gray-50 shadow transform ring-0 transition ease-in-out duration-200">
-                    <span data-target="switch.offIcon" class="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity" aria-hidden="true">
+                <span data-switch-target="toggle" class="relative inline-block h-6 w-6 rounded-full bg-gray-50 shadow transform ring-0 transition ease-in-out duration-200">
+                    <span data-switch-target="offIcon" class="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity" aria-hidden="true">
                         {% svg "/assets/images/heroicons/solid/sun.svg" class="h-5 w-5 text-yellow-600" %}
                     </span>
-                    <span data-target="switch.onIcon" class="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity" aria-hidden="true">
+                    <span data-switch-target="onIcon" class="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity" aria-hidden="true">
                         {% svg "/assets/images/heroicons/solid/moon.svg" class="h-5 w-5 text-black" %}
                     </span>
                 </span>
