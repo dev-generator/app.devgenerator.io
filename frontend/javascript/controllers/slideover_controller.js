@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   open() {
-    this.containerTarget.classList.remove(CONSTANTS.HIDDEN);
+    this.containerTarget.classList.remove(this.hideClass);
 
     requestAnimationFrame(
       (() => {
@@ -37,7 +37,7 @@ export default class extends Controller {
     requestAnimationFrame(
       (() => {
         setTimeout(() => {
-          this.containerTarget.classList.add(CONSTANTS.HIDDEN);
+          this.containerTarget.classList.add(this.hideClass);
         }, 550);
       }),
     );
