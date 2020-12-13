@@ -33,10 +33,57 @@ module.exports = {
       width: {
         18: '4.5rem',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            'color': theme('colors.gray.800'),
+          },
+        },
+
+        dark: {
+          css: {
+            'color': theme('colors.gray.200'),
+            'h1': {
+              color: theme('colors.gray.50'),
+            },
+            'h2': {
+              color: theme('colors.gray.50'),
+            },
+            'h3': {
+              color: theme('colors.gray.50'),
+            },
+            'h4': {
+              color: theme('colors.gray.50'),
+            },
+            'h5': {
+              color: theme('colors.gray.50'),
+            },
+            'h6': {
+              color: theme('colors.gray.50'),
+            },
+            'strong': {
+              color: theme('colors.gray.100'),
+            },
+            'code': {
+              color: theme('colors.gray.200'),
+            },
+            'figcaption': {
+              color: theme('colors.gray.500'),
+            },
+            'blockquote': {
+              color: theme('colors.gray.200'),
+            },
+            '::selection': {
+              backgroundColor: '#6f7bb635',
+            },
+          },
+        },
+      }),
     },
   },
   variants: {
     display: ['responsive', 'dark'],
+    typography: ['dark'],
   },
   plugins: [
     require('@tailwindcss/forms'),

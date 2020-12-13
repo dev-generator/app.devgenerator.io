@@ -1,73 +1,45 @@
-import {Controller} from 'stimulus'
+import {Controller} from 'stimulus';
 import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
-  static targets = [CONSTANTS.TARGETS.TAB, CONSTANTS.TARGETS.PANEL]
-
-  connect() {
-    this.activeTabClasses = (this.data.get(CONSTANTS.ACTIVETAB) || CONSTANTS.ACTIVE).split(CONSTANTS.BLANKSPACE);
-    this.inactiveTabClasses = (this.data.get(CONSTANTS.INACTIVETAB) || CONSTANTS.INACTIVE).split(CONSTANTS.BLANKSPACE);
-    this.activeTabIconClasses = (this.data.get(CONSTANTS.ACTIVETABICON) || CONSTANTS.ACTIVE).split(CONSTANTS.BLANKSPACE);
-    this.inactiveTabIconClasses = (this.data.get(CONSTANTS.INACTIVETABICON) || CONSTANTS.INACTIVE).split(CONSTANTS.BLANKSPACE);
-    if (this.anchor) {
-      this.index = this.tabTargets.findIndex((tab) => tab.id === this.anchor)
-    }
-    this.showTab();
-  }
+  static targets = [CONSTANTS.TARGETS.TAB, CONSTANTS.TARGETS.PANEL];
+  static classes = [
+    CONSTANTS.CLASSES.HIDE, CONSTANTS.CLASSES.ACTIVETAB, CONSTANTS.CLASSES.INACTIVETAB,
+    CONSTANTS.CLASSES.ACTIVETABICON, CONSTANTS.CLASSES.INACTIVETABICON,
+  ];
+  static values = {index: Number};
 
   change(event) {
     event.preventDefault();
-
-    if (event.currentTarget.dataset.index) {
-      this.index = event.currentTarget.dataset.index;
-    } else if (event.currentTarget.dataset.id) {
-      this.index = this.tabTargets.findIndex((tab) => tab.id == event.currentTarget.dataset.id);
-    } else {
-      this.index = this.tabTargets.indexOf(event.currentTarget);
-    }
-
+    this.indexValue = event.currentTarget.dataset.index;
     window.dispatchEvent(new CustomEvent(CONSTANTS.TABCHANGE));
   }
 
-  showTab() {
-    this.tabTargets.forEach((tab, index) => {
-      const panel = this.panelTargets[index];
-
-      if (index === this.index) {
-        panel.classList.remove(CONSTANTS.HIDDEN);
-        tab.classList.remove(...this.inactiveTabClasses);
-        tab.classList.add(...this.activeTabClasses);
-        if (tab.children.length > 1 && tab.children[0].localName == CONSTANTS.DOM.SVG) {
-          tab.children[0].classList.remove(...this.inactiveTabIconClasses);
-          tab.children[0].classList.add(...this.activeTabIconClasses);
-        }
-
-        if (tab.id) {
-          event.preventDefault();
-          location.hash = tab.id;
-        }
-      } else {
-        panel.classList.add(CONSTANTS.HIDDEN);
-        tab.classList.remove(...this.activeTabClasses);
-        tab.classList.add(...this.inactiveTabClasses);
-        if (tab.children.length > 1 && tab.children[0].localName == CONSTANTS.DOM.SVG) {
-          tab.children[0].classList.remove(...this.activeTabIconClasses);
-          tab.children[0].classList.add(...this.inactiveTabIconClasses);
-        }
-      }
-    })
-  }
-
-  get index() {
-    return parseInt(this.data.get(CONSTANTS.INDEX) || 0);
-  }
-
-  set index(value) {
-    this.data.set(CONSTANTS.INDEX, (value >= 0 ? value : 0));
+  indexValueChanged() {
     this.showTab();
   }
 
-  get anchor() {
-    return (document.URL.split(CONSTANTS.HASHTAG).length > 1) ? document.URL.split(CONSTANTS.HASHTAG)[1] : null;
+  showTab() {
+    this.tabTargets.forEach((tab, i) => {
+      const panel = this.panelTargets[i];
+
+      if (i === this.indexValue) {
+        panel.classList.remove(this.hideClass);
+        tab.classList.remove(...this.inactiveTabClass.split(CONSTANTS.BLANKSPACE));
+        tab.classList.add(...this.activeTabClass.split(CONSTANTS.BLANKSPACE));
+        if (tab.children.length > 1 && tab.children[0].localName == CONSTANTS.DOM.SVG) {
+          tab.children[0].classList.remove(...this.inactiveTabIconClass.split(CONSTANTS.BLANKSPACE));
+          tab.children[0].classList.add(...this.activeTabIconClass.split(CONSTANTS.BLANKSPACE));
+        }
+      } else {
+        panel.classList.add(this.hideClass);
+        tab.classList.remove(...this.activeTabClass.split(CONSTANTS.BLANKSPACE));
+        tab.classList.add(...this.inactiveTabClass.split(CONSTANTS.BLANKSPACE));
+        if (tab.children.length > 1 && tab.children[0].localName == CONSTANTS.DOM.SVG) {
+          tab.children[0].classList.remove(...this.activeTabIconClass.split(CONSTANTS.BLANKSPACE));
+          tab.children[0].classList.add(...this.inactiveTabIconClass.split(CONSTANTS.BLANKSPACE));
+        }
+      }
+    });
   }
 }

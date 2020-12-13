@@ -20,6 +20,7 @@ main:
           - name: Package.json
             link: /generators/node_modules/packagejson/
             icon: npm
+            badge: new
   - name: section 2
     first: false
     children:

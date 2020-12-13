@@ -2,7 +2,7 @@ details:
   - title: Core Details
     icon: identification
     uniqueName: core-details
-    details: Core fields apart of the list
+    details: Core data points when creating a package.json output.
     fields:
       - name: Name
         uniqueName: name
@@ -162,7 +162,7 @@ details:
         defaultValue: ""
         fieldType: text
   - title: Engine
-    details: Anthing related to engines or operating system details/restrictions
+    details: Anything related to engines or operating system details/restrictions
     icon: key
     uniqueName: engine_section
     fields:

@@ -4,7 +4,6 @@ about: a standard Pull Request form
 title: ''
 labels: new
 assignees: chiefpansancolt
-
 ---
 
 ## Description

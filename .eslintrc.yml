@@ -3,6 +3,7 @@ globals:
   goog: false
 env:
   browser: true
+parser: babel-eslint
 parserOptions:
   ecmaVersion: 2017 # Enable async/await support in Node scripts
   sourceType: module

@@ -2,24 +2,33 @@ import {Controller} from 'stimulus';
 import {CONSTANTS} from '../constants';
 
 export default class extends Controller {
-  static targets = [CONSTANTS.TARGETS.TOGGLE, CONSTANTS.TARGETS.ONICON, CONSTANTS.TARGETS.OFFICON];
+  static targets = [
+    CONSTANTS.TARGETS.TOGGLE, CONSTANTS.TARGETS.ONICON,
+    CONSTANTS.TARGETS.OFFICON, CONSTANTS.TARGETS.CONTAINER,
+  ];
+  static classes = [
+    CONSTANTS.CLASSES.ONICON, CONSTANTS.CLASSES.OFFICON, CONSTANTS.CLASSES.ONTOGGLE, CONSTANTS.CLASSES.OFFTOGGLE,
+    CONSTANTS.CLASSES.ENTERING, CONSTANTS.CLASSES.LEAVING, CONSTANTS.CLASSES.ONBACKGROUND, CONSTANTS.CLASSES.OFFBACKGROUND,
+  ];
+  static values = {
+    enterTimeout: Number, leaveTimeout: Number,
+    darkMode: Boolean, status: Boolean,
+  };
 
   connect() {
-    this.visibleClass = this.data.get(CONSTANTS.VISIBLECLASS) || null;
-    this.invisibleClass = this.data.get(CONSTANTS.INVISIBLECLASS) || null;
-    this.activeClass = this.data.get(CONSTANTS.ACTIVECLASS) || null;
-    this.enteringClass = this.data.get(CONSTANTS.ENTERINGCLASS) || null;
-    this.enterTimeout = parseInt(this.data.get(CONSTANTS.ENTERTIMEOUT)) || 0;
-    this.leavingClass = this.data.get(CONSTANTS.LEAVINGCLASS) || null;
-    this.leaveTimeout = parseInt(this.data.get(CONSTANTS.LEAVINGTIMEOUT)) || 0;
-    this.darkMode = this.data.get(CONSTANTS.DARKMODE) || CONSTANTS.FALSE;
-    if (this.darkMode != CONSTANTS.TRUE) {
+    if (this.darkModeValue) {
+      if (localStorage.theme == CONSTANTS.DARK) {
+        this._on();
+      } else if (localStorage.theme == CONSTANTS.LIGHT) {
+        this._off();
+      }
+    } else {
       this.toggle();
     }
   }
 
   toggle() {
-    if (this.active == CONSTANTS.TRUE) {
+    if (this.statusValue) {
       this._off();
     } else {
       this._on();
@@ -27,111 +36,82 @@ export default class extends Controller {
   }
 
   _on() {
-    this.toggleTarget.parentNode.classList.remove(CONSTANTS.BG.GRAY200);
-    this.toggleTarget.parentNode.classList.add(CONSTANTS.BG.PURPLE700);
-    this.toggleTarget.classList.remove(CONSTANTS.TRANSLATE.X0);
-    this.toggleTarget.classList.add(this.activeClass);
-    this.data.set(CONSTANTS.ON, CONSTANTS.TRUE);
-    if (this.darkMode == CONSTANTS.TRUE) {
-      localStorage.theme  = CONSTANTS.DARK;
+    this.containerTarget.classList.remove(this.offBackgroundClass);
+    this.containerTarget.classList.add(this.onBackgroundClass);
+    this.toggleTarget.classList.remove(this.offToggleClass);
+    this.toggleTarget.classList.add(this.onToggleClass);
+    this.statusValue = true;
+    if (this.darkModeValue) {
+      localStorage.theme = CONSTANTS.DARK;
       document.querySelector(CONSTANTS.DOM.HTML).classList.add(CONSTANTS.DARK);
     }
 
-    this._leavingClassList.forEach(
-      (klass => {
-        this.onIconTarget.classList.remove(klass)
-      }).bind(this),
+    this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(
+      ((klass) => {
+        this.onIconTarget.classList.remove(klass);
+      }),
     );
 
-    this._enteringClassList.forEach(
-      (klass => {
-        this.onIconTarget.classList.add(klass)
-      }).bind(this),
+    this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(
+      ((klass) => {
+        this.onIconTarget.classList.add(klass);
+      }),
     );
 
     requestAnimationFrame(
       (() => {
-        this._invisibleClassList.forEach(klass => this.onIconTarget.classList.remove(klass));
-        this._visibleClassList.forEach(klass => this.offIconTarget.classList.remove(klass));
-        this._visibleClassList.forEach(klass => this.onIconTarget.classList.add(klass));
-        this._invisibleClassList.forEach(klass => this.offIconTarget.classList.add(klass));
+        this.onIconTarget.classList.remove(this.offIconClass);
+        this.offIconTarget.classList.remove(this.onIconClass);
+        this.onIconTarget.classList.add(this.onIconClass);
+        this.offIconTarget.classList.add(this.offIconClass);
 
         setTimeout(
           (() => {
-            this._enteringClassList.forEach(klass => this.offIconTarget.classList.remove(klass));
-          }).bind(this),
-          this.enterTimeout,
-        )
-      }).bind(this),
+            this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.offIconTarget.classList.remove(klass));
+          }),
+          this.enterTimeoutValue,
+        );
+      }),
     );
   }
 
   _off() {
-    this.toggleTarget.parentNode.classList.remove(CONSTANTS.BG.PURPLE700);
-    this.toggleTarget.parentNode.classList.add(CONSTANTS.BG.GRAY200);
-    this.toggleTarget.classList.remove(this.activeClass);
-    this.toggleTarget.classList.add(CONSTANTS.TRANSLATE.X0);
-    this.data.set(CONSTANTS.ON, CONSTANTS.FALSE);
-    if (this.darkMode == CONSTANTS.TRUE) {
+    this.containerTarget.classList.remove(this.onBackgroundClass);
+    this.containerTarget.classList.add(this.offBackgroundClass);
+    this.toggleTarget.classList.remove(this.onToggleClass);
+    this.toggleTarget.classList.add(this.offToggleClass);
+    this.statusValue = false;
+    if (this.darkModeValue) {
       localStorage.theme = CONSTANTS.LIGHT;
       document.querySelector(CONSTANTS.DOM.HTML).classList.remove(CONSTANTS.DARK);
     }
-    
 
-    this._leavingClassList.forEach(
-      (klass => {
-        this.offIconTarget.classList.remove(klass)
-      }).bind(this),
+    this.leavingClass.split(CONSTANTS.BLANKSPACE).forEach(
+      ((klass) => {
+        this.offIconTarget.classList.remove(klass);
+      }),
     );
 
-    this._enteringClassList.forEach(
-      (klass => {
-        this.offIconTarget.classList.add(klass)
-      }).bind(this),
+    this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach(
+      ((klass) => {
+        this.offIconTarget.classList.add(klass);
+      }),
     );
 
     requestAnimationFrame(
       (() => {
-        this._visibleClassList.forEach(klass => this.onIconTarget.classList.remove(klass));
-        this._invisibleClassList.forEach(klass => this.offIconTarget.classList.remove(klass));
-        this._invisibleClassList.forEach(klass => this.onIconTarget.classList.add(klass));
-        this._visibleClassList.forEach(klass => this.offIconTarget.classList.add(klass));
+        this.onIconTarget.classList.remove(this.onIconClass);
+        this.offIconTarget.classList.remove(this.offIconClass);
+        this.onIconTarget.classList.add(this.offIconClass);
+        this.offIconTarget.classList.add(this.onIconClass);
 
         setTimeout(
           (() => {
-            this._enteringClassList.forEach(klass => this.onIconTarget.classList.remove(klass));
-          }).bind(this),
-          this.enterTimeout,
-        )
-      }).bind(this),
+            this.enteringClass.split(CONSTANTS.BLANKSPACE).forEach((klass) => this.onIconTarget.classList.remove(klass));
+          }),
+          this.leaveTimeoutValue,
+        );
+      }),
     );
-  }
-
-  get active() {
-    return this.data.get(CONSTANTS.ON);
-  }
-
-  get _onClassList() {
-    return !this.onClass ? [] : this.onClass.split(CONSTANTS.BLANKSPACE);
-  }
-
-  get _offClassList() {
-    return !this.offClass ? [] : this.offClass.split(CONSTANTS.BLANKSPACE);
-  }
-
-  get _visibleClassList() {
-    return !this.visibleClass ? [] : this.visibleClass.split(CONSTANTS.BLANKSPACE);
-  }
-
-  get _invisibleClassList() {
-    return !this.invisibleClass ? [] : this.invisibleClass.split(CONSTANTS.BLANKSPACE);
-  }
-
-  get _enteringClassList() {
-    return !this.enteringClass ? [] : this.enteringClass.split(CONSTANTS.BLANKSPACE);
-  }
-
-  get _leavingClassList() {
-    return !this.leavingClass ? [] : this.leavingClass.split(CONSTANTS.BLANKSPACE);
   }
 }

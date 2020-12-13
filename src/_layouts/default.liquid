@@ -4,10 +4,14 @@
         {% render "main/head", labels: site.metadata, title: page.title %}
     </head>
 
-    <body class="h-screen flex overflow-hidden bg-gray-100 dark:bg-gray-900" data-controller="mobile">
+    <body class="h-screen flex overflow-hidden bg-gray-100 dark:bg-gray-900"
+        data-controller="mobile" data-mobile-hide-class="hidden" data-action="keyup@window->mobile#closeWithKeyboard"
+        data-mobile-entering-value="50" data-mobile-leaving-value="250"
+        data-mobile-overlay-entering-class="opacity-100" data-mobile-overlay-leaving-class="opacity-0"
+        data-mobile-sidebar-entering-class="translate-x-0" data-mobile-sidebar-leaving-class="-translate-x-full">
         
-        {% render "sidebar/mobile", navigation: site.data.navigation.main %}
-        {% render "sidebar/static", navigation: site.data.navigation.main %}
+        {% render "sidebar/mobile", navigation: site.data.navigation.main, labels: site.metadata %}
+        {% render "sidebar/static", navigation: site.data.navigation.main, labels: site.metadata %}
 
         <div class="flex-1 overflow-auto focus:outline-none" tabindex="0">
             {% render "main/header" %}
