@@ -8,6 +8,10 @@ copyright: "&copy; 2020 Dev Generator. All rights reserved."
 twitter: https://twitter.com/dev_generator
 github: https://github.com/dev-generator/devgenerator.io
 discord: https://discord..com/invite/fzXW3rW
+error:
+  header: We are sorry, Page not found!
+  subtitle: The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+  btn: Back To Homepage
 footer:
   twitter_tooltip: Get latest updates about the tool!
   github_tooltip: Checkout the repo and see how this is built!
