@@ -42,10 +42,11 @@ layout: default
                         </button>
                         {% render "slideovers/file_upload", labels: site.metadata.generator[page.namespace].upload %}
                     </div>
-                    <div data-controller="slideover" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
+                    <div data-controller="slideover generate" data-slideover-hide-class="hidden" data-slideover-allow-close-value="true"
                         data-slideover-to-background-class="opacity-100" data-slideover-from-background-class="opacity-0"
-                        data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full">
-                        <button data-action="click->slideover#open" type="button"
+                        data-slideover-to-view-class="translate-x-0" data-slideover-from-view-class="translate-x-full"
+                        data-generate-tool-value="{{ page.namespace }}">
+                        <button data-action="click->slideover#open click->generate#generate" type="button"
                                 class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                             {% svg "/assets/images/heroicons/outline/code.svg" class="h-5 w-5 mr-2" %}
                             {{ site.metadata.generator.generate }}
@@ -64,7 +65,6 @@ layout: default
             </div>
         </div>
     </div>
-
 
     <!-- Notification Section -->
     <div class="fixed z-100 inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
