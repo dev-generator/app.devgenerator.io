@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
+- Add Dark Mode support
+- Add to the Home page a timeline of release versions
+- Add Featured tiles of new or popular Generators
+- Add Cards for groups of generators.
+- Add License to project
 - Ability to download generated output. [#8](https://github.com/dev-generator/app.devgenerator.io/issues/8)
 - Ability to copy to clipboard generated output. [#9](https://github.com/dev-generator/app.devgenerator.io/issues/9)
 - Ability to include/Exclude a field for inclusion in the generation. [#11](https://github.com/dev-generator/app.devgenerator.io/issues/11)
