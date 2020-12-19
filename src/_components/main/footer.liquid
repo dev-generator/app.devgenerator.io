@@ -9,7 +9,7 @@ variables:
 <footer class="bg-white dark:bg-gray-800 border-l border-gray-100 dark:border-gray-900 flex-1">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div class="flex justify-center space-x-6 md:order-2">
-            <a href="{{ labels.twitter }}" class="text-gray-400 dark:text-gray-100 hover:text-light-blue-400 relative"
+            <a href="{{ labels.twitter }}" class="text-gray-400 dark:text-gray-100 hover:text-light-blue-400 dark:hover:text-light-blue-400 relative"
                 data-controller="popover" data-popover-hide-class="hidden" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut">
                 <span class="sr-only">Twitter</span>
                 {% svg "/assets/images/social-media/twitter.svg" class="h-6 w-6" %}
@@ -27,12 +27,21 @@ variables:
                 </span>
             </a>
 
-            <a href="{{ labels.discord }}" class="text-gray-400 dark:text-gray-100 hover:text-indigo-400 relative"
+            <a href="{{ labels.discord }}" class="text-gray-400 dark:text-gray-100 hover:text-indigo-400 dark:hover:text-indigo-400 relative"
                 data-controller="popover" data-popover-hide-class="hidden" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut">
                 <span class="sr-only">Discord</span>
                 {% svg "/assets/images/social-media/discord.svg" class="h-6 w-6" %}
                 <span data-popover-target="content" class="hidden right-4 bottom-4 p-2 absolute z-50 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
                     {{ labels.footer.discord_tooltip }}
+                </span>
+            </a>
+
+            <a href="{{ labels.youtube }}" class="text-gray-400 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-600 relative"
+                data-controller="popover" data-popover-hide-class="hidden" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut">
+                <span class="sr-only">YouTube</span>
+                {% svg "/assets/images/social-media/youtube.svg" class="h-6 w-6" %}
+                <span data-popover-target="content" class="hidden right-4 bottom-4 p-2 absolute z-50 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+                    {{ labels.footer.youtube_tooltip }}
                 </span>
             </a>
         </div>

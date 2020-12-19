@@ -35,4 +35,13 @@ variables:
             {{ labels.footer.discord_tooltip }}
         </span>
     </a>
+
+    <a href="{{ labels.youtube }}" class="text-gray-800 dark:text-gray-100 hover:text-red-600 dark:hover:text-red-600 relative"
+        data-controller="popover" data-popover-hide-class="hidden" data-action="mouseover->popover#mouseOver mouseout->popover#mouseOut">
+        <span class="sr-only">YouTube</span>
+        {% svg "/assets/images/social-media/youtube.svg" class="h-6 w-6" %}
+        <span data-popover-target="content" class="hidden right-4 bottom-4 p-2 absolute z-50 ml-4 text-sm rounded-lg bg-purple-600 text-white w-max">
+            {{ labels.footer.youtube_tooltip }}
+        </span>
+    </a>
 </div>
