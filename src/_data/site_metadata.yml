@@ -8,6 +8,7 @@ copyright: "&copy; 2020 Dev Generator. All rights reserved."
 twitter: https://twitter.com/dev_generator
 github: https://github.com/dev-generator/devgenerator.io
 discord: https://discord.com/invite/fzXW3rW
+youtube: https://www.youtube.com/channel/UCu498dSB67OJvy9o9xuPX8Q
 error:
   header: We are sorry, Page not found!
   subtitle: The page you are looking for might have been removed had its name changed or is temporarily unavailable.
@@ -16,6 +17,7 @@ footer:
   twitter_tooltip: Get latest updates about the tool!
   github_tooltip: Checkout the repo and see how this is built!
   discord_tooltip: Join the community and chat with other users of the site!
+  youtube_tooltip: Check out our YouTube Channel for complementary videos!
 features:
   link_new: "https://github.com/dev-generator/app.devgenerator.io/issues/new?assignees=chiefpansancolt&labels=enhancement%2C+new&template=feature-request.md&title=Feature+Request:"
 banner:
