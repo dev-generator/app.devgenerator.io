@@ -9,6 +9,7 @@ This tool enables a user to generate a file based on the usage like package.json
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![Setup](https://github.com/chiefpansancolt/developer-file-generator/workflows/Setup/badge.svg)
 ![Lints](https://github.com/chiefpansancolt/developer-file-generator/workflows/Lints/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/60fe0d1c-b295-4875-af15-0cef406641fd/deploy-status)](https://app.netlify.com/sites/app-devgenerator/deploys)
 
 ## Usage
 
@@ -16,7 +17,7 @@ Check out [https://app.devgenerator.io](https://appdevgenerator.io) for usage an
 
 Generators Supported:
 
-- [Package.json](https://app.devgenerator.io/generators/node_modules/packagejson) - here is the link to the config doc used as a base poitn to build out, [documentation](https://docs.npmjs.com/cli/v6/configuring-npm/package-json)
+- [Package.json](https://app.devgenerator.io/generators/node_modules/packagejson) - here is the link to the config doc used as a base position to build out, [documentation](https://docs.npmjs.com/cli/v6/configuring-npm/package-json)
 <!-- - [Rubocop](https://devgenerator.io/generators/ruby_gems/rubocop) - Config doc where generator are built off of [documentation](https://docs.rubocop.org/rubocop/1.3/index.html) -->
 
 ## Development
@@ -65,4 +66,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the
 [all-contributors](https://github.com/all-contributors/all-contributors)
-pecification. Contributions of any kind welcome!
+specification. Contributions of any kind welcome!
