@@ -1,7 +1,7 @@
 timeline:
   - name: Dev Generator v1.0
     details: Today we release the initial version of Dev Generator. Read more here about what is included!
-    date: Feb 18, 2021
-    datetime: 2021-02-18T00:00:00.000Z
+    date: Dec 30, 2020
+    datetime: 2020-12-30T00:00:00.000Z
     location: top
-    link: https://github.com/dev-generator/app.devgenerator.io/releases
+    link: https://github.com/dev-generator/app.devgenerator.io/releases/tag/1.0.0
